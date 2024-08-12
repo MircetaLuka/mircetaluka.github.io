@@ -1,0 +1,290 @@
+[
+  {
+    "id": "tang2013social",
+    "type": "article-journal",
+    "title": "Social recommendation: a review",
+    "author": [
+      {"family": "Tang", "given": "Jiliang"},
+      {"family": "Hu", "given": "Xia"},
+      {"family": "Liu", "given": "Huan"}
+    ],
+    "container-title": "Social Network Analysis and Mining",
+    "volume": "3",
+    "page": "1113-1133",
+    "issued": {"date-parts": [[2013]]},
+    "publisher": "Springer"
+  },
+  {
+    "id": "konstas2009social",
+    "type": "paper-conference",
+    "title": "On social networks and collaborative recommendation",
+    "author": [
+      {"family": "Konstas", "given": "Ioannis"},
+      {"family": "Stathopoulos", "given": "Vassilios"},
+      {"family": "Jose", "given": "Joemon M"}
+    ],
+    "container-title": "Proceedings of the 32nd international ACM SIGIR conference on Research and development in information retrieval",
+    "page": "195-202",
+    "issued": {"date-parts": [[2009]]}
+  },
+  {
+    "id": "sun2015recommender",
+    "type": "article-journal",
+    "title": "Recommender systems based on social networks",
+    "author": [
+      {"family": "Sun", "given": "Zhoubao"},
+      {"family": "Han", "given": "Lixin"},
+      {"family": "Huang", "given": "Wenliang"},
+      {"family": "Wang", "given": "Xueting"},
+      {"family": "Zeng", "given": "Xiaoqin"},
+      {"family": "Wang", "given": "Min"},
+      {"family": "Yan", "given": "Hong"}
+    ],
+    "container-title": "Journal of Systems and Software",
+    "volume": "99",
+    "page": "109-119",
+    "issued": {"date-parts": [[2015]]},
+    "publisher": "Elsevier"
+  },
+  {
+    "id": "mcpherson2001birds",
+    "type": "article-journal",
+    "title": "Birds of a feather: Homophily in social networks",
+    "author": [
+      {"family": "McPherson", "given": "Miller"},
+      {"family": "Smith-Lovin", "given": "Lynn"},
+      {"family": "Cook", "given": "James M"}
+    ],
+    "container-title": "Annual review of sociology",
+    "volume": "27",
+    "issue": "1",
+    "page": "415-444",
+    "issued": {"date-parts": [[2001]]},
+    "publisher": "Annual Reviews"
+  },
+  {
+    "id": "liu2018research",
+    "type": "paper-conference",
+    "title": "Research of text classification based on improved TF-IDF algorithm",
+    "author": [
+      {"family": "Liu", "given": "Cai-zhi"},
+      {"family": "Sheng", "given": "Yan-xiu"},
+      {"family": "Wei", "given": "Zhi-qiang"},
+      {"family": "Yang", "given": "Yong-Quan"}
+    ],
+    "container-title": "2018 IEEE International Conference of Intelligent Robotic and Control Engineering (IRCE)",
+    "page": "218-222",
+    "issued": {"date-parts": [[2018]]},
+    "publisher": "IEEE"
+  },
+  {
+    "id": "europarl",
+    "type": "article-journal",
+    "title": "Artificial intelligence act",
+    "author": [
+      {
+        "family": "Madiega",
+        "given": "Tambiama"
+      }
+    ],
+    "container-title": "European Parliament: European Parliamentary Research Service",
+    "issued": {
+      "date-parts": [
+        [2021]
+      ]
+    }
+  },
+  {
+    "id": "europarlcopyright",
+    "type": "article-journal",
+    "title": "Copyright Law in the EU: Salient features of copyright law across the EU Member States",
+    "author": [
+      {
+        "family": "EPRS",
+        "given": "Comparative Law"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [2018]
+      ]
+    },
+    "publisher": "EPRS: European Parliamentary Research Service"
+  },
+  {
+    "id": "aisurveillance",
+    "type": "book",
+    "title": "The global expansion of AI surveillance",
+    "author": [
+      {
+        "family": "Feldstein",
+        "given": "Steven"
+      }
+    ],
+    "volume": "17",
+    "issued": {
+      "date-parts": [
+        [2019]
+      ]
+    },
+    "publisher": "Carnegie Endowment for International Peace Washington, DC"
+  },
+  {
+    "id": "serbiasurveillance",
+    "type": "article-journal",
+    "title": "The Sum of All Fears--Chinese AI Surveillance in Serbia",
+    "author": [
+      {
+        "family": "Bjeloš",
+        "given": "Maja"
+      }
+    ],
+    "container-title": "Western Balkans at the Crossroads: Ways Forward in Analyzing External Actors’ Influence",
+    "page": "141",
+    "issued": {
+      "date-parts": [
+        [2021]
+      ]
+    }
+  },
+  {
+    "id": "10.1145/3597151",
+    "type": "article-journal",
+    "title": "Legal Challenges to Generative AI, Part I",
+    "author": [
+      {
+        "family": "Samuelson",
+        "given": "Pamela"
+      }
+    ],
+    "container-title": "Communications of the ACM",
+    "volume": "66",
+    "issue": "7",
+    "page": "20-23",
+    "issued": {
+      "date-parts": [
+        [2023, 6]
+      ]
+    },
+    "publisher": "Association for Computing Machinery",
+    "url": "https://doi.org/10.1145/3597151",
+    "doi": "10.1145/3597151"
+  },
+  {
+    "id": "10.1145/3625251",
+    "type": "article-journal",
+    "title": "Legal Challenges to Generative AI, Part II",
+    "author": [
+      {
+        "family": "Samuelson",
+        "given": "Pamela"
+      }
+    ],
+    "container-title": "Communications of the ACM",
+    "volume": "66",
+    "issue": "11",
+    "page": "16-19",
+    "issued": {
+      "date-parts": [
+        [2023, 10]
+      ]
+    },
+    "publisher": "Association for Computing Machinery",
+    "url": "https://doi.org/10.1145/3625251",
+    "doi": "10.1145/3625251"
+  },
+  {
+    "id": "openai",
+    "type": "webpage",
+    "title": "Generative models",
+    "author": [
+      {
+        "family": "Karpathy",
+        "given": "Andrej"
+      },
+      {
+        "family": "Abbeel",
+        "given": "Pieter"
+      },
+      {
+        "family": "Brockman",
+        "given": "Greg"
+      },
+      {
+        "family": "Chen",
+        "given": "Peter"
+      },
+      {
+        "family": "Cheung",
+        "given": "Vicki"
+      },
+      {
+        "family": "Duan",
+        "given": "Yan"
+      },
+      {
+        "family": "Goodfellow",
+        "given": "Ian"
+      },
+      {
+        "family": "Kingma",
+        "given": "Durk"
+      },
+      {
+        "family": "Ho",
+        "given": "Jonathan"
+      },
+      {
+        "family": "Houthooft",
+        "given": "Rein"
+      },
+      {
+        "family": "Salimans",
+        "given": "Tim"
+      },
+      {
+        "family": "Schulman",
+        "given": "John"
+      },
+      {
+        "family": "Sutskever",
+        "given": "Ilya"
+      },
+      {
+        "family": "Zaremba",
+        "given": "Wojciech"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [2016]
+      ]
+    },
+    "URL": "https://openai.com/research/generative-models#going-forward",
+    "note": "Accessed on January 1, 2024"
+  },
+  {
+    "id": "ahmed2021hawk",
+    "type": "article-journal",
+    "title": "Hawk-eye: An AI-powered threat detector for intelligent surveillance cameras",
+    "author": [
+      {
+        "family": "Ahmed",
+        "given": "Ahmed Abdelmoamen"
+      },
+      {
+        "family": "Echi",
+        "given": "Mathias"
+      }
+    ],
+    "container-title": "IEEE Access",
+    "volume": "9",
+    "page": "63283-63293",
+    "issued": {
+      "date-parts": [
+        [2021]
+      ]
+    },
+    "publisher": "IEEE"
+  }
+]
