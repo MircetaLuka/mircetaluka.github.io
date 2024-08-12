@@ -81,14 +81,15 @@ generative models are being trained[^3]:
 > *"To train a generative model we first collect a large amount of data
 > in some domain (e.g., think millions of images, sentences, or sounds,
 > etc.) and then train a model to generate data like it.", cf.
-> {{ cite "openai" }}*
+> {{< cite "openai" >}}*
+
 
 While this process is pivotal for the development of generative AI
 models, it also poses significant legal challenges. Considering that a
 very large amount of data is needed for the training of such models,
 questions arise whether publicly available copyrighted data from the
 internet has potentially been used as training data. In section
-[3](#casestudies){reference-type="ref" reference="casestudies"} real
+[3](#casestudies) real
 world case studies will be examined.
 
 ## Legal challenges regarding the use of outputs created by generative artificial intelligence models
