@@ -19,7 +19,8 @@ theme = ['PaperMod', 'hugo-cite']
 [params]
   math = true
 
-
+[minify]
+  disableJS = true
 
 [security]
   enableInlineShortcodes = false
