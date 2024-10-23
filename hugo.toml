@@ -1,8 +1,7 @@
-baseURL = ''
+baseURL = 'https://mircetaluka.github.io/'
 languageCode = 'en-us'
 title = 'Luka Mirčeta'
 theme = ['PaperMod', 'hugo-cite']
-relativeURLs = true
 
 
 
