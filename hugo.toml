@@ -2,7 +2,7 @@ baseURL = ''
 languageCode = 'en-us'
 title = 'Luka Mirčeta'
 theme = ['PaperMod', 'hugo-cite']
-
+relativeURLs = true
 
 
 
