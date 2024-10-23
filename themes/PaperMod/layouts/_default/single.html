@@ -1,5 +1,7 @@
 {{- define "main" }}
-
+{{ if or .Params.math .Site.Params.math }}
+{{ partial "math.html" . }}
+{{ end }}
 <article class="post-single">
   <header class="post-header">
     {{ partial "breadcrumbs.html" . }}
@@ -61,5 +63,7 @@
   {{- partial "comments.html" . }}
   {{- end }}
 </article>
+
+
 
 {{- end }}{{/* end main */}}
