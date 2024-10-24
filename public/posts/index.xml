@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Luka Mirčeta</title>
-    <link>/posts/</link>
+    <link>//localhost:1313/posts/</link>
     <description>Recent content in Posts on Luka Mirčeta</description>
     <image>
       <title>Luka Mirčeta</title>
-      <url>/content/posts/images</url>
-      <link>/content/posts/images</link>
+      <url>//localhost:1313/content/posts/images</url>
+      <link>//localhost:1313/content/posts/images</link>
     </image>
     <generator>Hugo -- 0.125.1</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 26 Jun 2024 20:18:53 +0200</lastBuildDate>
-    <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Legal Challenges to generative AI</title>
-      <link>/posts/legal-challenges-ai/</link>
+      <link>//localhost:1313/posts/legal-challenges-ai/</link>
       <pubDate>Wed, 26 Jun 2024 20:18:53 +0200</pubDate>
-      <guid>/posts/legal-challenges-ai/</guid>
+      <guid>//localhost:1313/posts/legal-challenges-ai/</guid>
       <description>The unregulated use of generative artificial intelligence (AI) has raised critical legal questions, particularly concerning the data used for training and the implications of created outputs. This paper examines the two primary legal challenges in the realm of generative AI.
 Firstly, it scrutinizes the training data used for the development of generative models, exploring the potential use of publicly available copyrighted data as training data and the associated legal challenges to it.</description>
     </item>
     <item>
       <title>Recommender Systems based on Social Networks</title>
-      <link>/posts/recommender-systems/</link>
+      <link>//localhost:1313/posts/recommender-systems/</link>
       <pubDate>Wed, 26 Jun 2024 20:08:50 +0200</pubDate>
-      <guid>/posts/recommender-systems/</guid>
+      <guid>//localhost:1313/posts/recommender-systems/</guid>
       <description>In a world where information is everywhere and everything is getting digitized, it becomes increasingly difficult for users to find relevant content. Recommender systems try to solve this issue by filtering the irrelevant contents, showing only items of potential interest to the user.
 This paper provides an overview of the three main types of recommender systems, namely content-based, collaborative-filtering based and hybrid recommender systems, discussing their strengths and weaknesses. Additionally the incorporation of social networks in recommender systems is being elaborated, since traditional recommendation mechanisms tend to neglect social connections between users, which could significantly increase the accuracy of a recommendation system.</description>
     </item>
     <item>
       <title>Creating a QA Application using LangChain</title>
-      <link>/posts/rag-app/</link>
+      <link>//localhost:1313/posts/rag-app/</link>
       <pubDate>Sat, 15 Jun 2024 12:39:02 +0200</pubDate>
-      <guid>/posts/rag-app/</guid>
+      <guid>//localhost:1313/posts/rag-app/</guid>
       <description>In this project, we will be implementing a simple application that enables us to perform Question-Answering (QA) on a given document using Retrieval Augmented Generation (RAG). Specifically, we will be using a subset of the Serbian construction law as our dataset for performing QA tasks. Furthermore we are also going to deploy our application to the Google Cloud enabling other Users to gain access to our ChatBot via a publicly available link.</description>
     </item>
     <item>
       <title>How to Create Your Own VPN Using Amazon Web Services</title>
-      <link>/posts/aws-vpn/</link>
+      <link>//localhost:1313/posts/aws-vpn/</link>
       <pubDate>Thu, 09 May 2024 19:10:35 +0200</pubDate>
-      <guid>/posts/aws-vpn/</guid>
+      <guid>//localhost:1313/posts/aws-vpn/</guid>
       <description>In this post, we will explore how to easily create a proxy tunnel to route network traffic to an EC2 instance located in an AWS data center. This tutorial was inspired by NetworkChuck.
 Setting up the VPN is straightforward once you know the commands.
 Disclaimer Please note that this tutorial only works with the Firefox web browser. You are welcome to try it with other web browsers, but there is no guarantee it will work as expected.</description>
