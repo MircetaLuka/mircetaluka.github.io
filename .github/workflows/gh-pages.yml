@@ -53,7 +53,7 @@ jobs:
       - name: Build with Hugo
         run: |
           hugo \
-            --environment production --gc --minify\
+            --environment production --gc --minify=false\
             --baseURL ${{ steps.pages.outputs.base_url }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
