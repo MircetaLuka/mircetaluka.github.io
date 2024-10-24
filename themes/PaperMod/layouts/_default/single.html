@@ -24,9 +24,6 @@
       {{- partial "translation_list.html" . -}}
       {{- partial "edit_post.html" . -}}
       {{- partial "post_canonical.html" . -}}
-      {{ if or .Params.math .Site.Params.math }}
-      {{ partial "math.html" . }}
-      {{ end }}
     </div>
     {{- end }}
   </header>
