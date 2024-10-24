@@ -7,8 +7,6 @@
 <meta name="robots" content="noindex, nofollow">
 {{- end }}
 
-{{ if .Params.math }}{{ partial "helpers/katex.html" . }}{{ end }}
-
 
 {{- /* Title */}}
 <title>{{ if .IsHome }}{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }}</title>
@@ -148,9 +146,6 @@
     </style>
     {{- end }}
 </noscript>
-
-{{- partial "extend_head.html" . -}}
-
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 {{- template "_internal/google_analytics.html" . }}

@@ -2,10 +2,7 @@
 {{- if lt hugo.Version "0.112.4" }}
 {{- errorf "=> hugo v0.112.4 or greater is required for hugo-PaperMod to build " }}
 {{- end -}}
-{{ if .Params.math }}
-  <script type="text/javascript" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-{{ end }}
+
 
 
 <!DOCTYPE html>
@@ -13,24 +10,6 @@
 
 <head>
     {{- partial "head.html" . }}
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$$', '$$'], ['\\(', '\\)']],
-      macros: {
-      	RR: "{\\bf R}",
-      	bold: ["{\\bf #1}", 1],
-        indep: "{\\perp \\!\\!\\! \\perp}",
-    	}
-    },
-    svg: {
-    fontCache: 'global'
-  	},
-  };
-</script>
-<script type="text/javascript" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script> 
 </head>
 
 <body class="
@@ -41,8 +20,9 @@
 {{- print " dark" }}
 {{- end -}}
 " id="top">
+    {{- partial "math.html" . }}
     {{- partialCached "header.html" . .Page -}}
-    <main class="main">
+<main class="main">
         {{- block "main" . }}{{ end }}
     </main>
     {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
