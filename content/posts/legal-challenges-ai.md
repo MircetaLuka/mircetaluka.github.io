@@ -1,7 +1,7 @@
 ---
 title: 'Legal Challenges to generative AI'
 date: 2024-06-26T20:18:53+02:00
-draft: true
+draft: false
 bibFile: '/content/posts/bibfile.json'
 ---
 The unregulated use of generative artificial intelligence (AI) has

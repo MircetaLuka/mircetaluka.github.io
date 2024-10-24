@@ -1,7 +1,7 @@
 +++
 title = 'How to Create Your Own VPN Using Amazon Web Services'
 date = 2024-05-09T19:10:35+02:00
-draft = true
+draft = false
 +++
 
 In this post, we will explore how to easily create a proxy tunnel to route network traffic to an EC2 instance located in an AWS data center. This tutorial was inspired by NetworkChuck.

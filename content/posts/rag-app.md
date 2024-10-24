@@ -1,7 +1,7 @@
 +++
 title = 'Creating a QA Application using LangChain'
 date = 2024-06-15T12:39:02+02:00
-draft = true
+draft = false
 +++
 In this project, we will be implementing a simple application that enables us to perform Question-Answering (QA) on a given document using Retrieval Augmented Generation (RAG). Specifically, we will be using a subset of the Serbian construction law as our dataset for performing QA tasks. Furthermore we are also going to deploy our application to the Google Cloud enabling other Users to gain access to our ChatBot via a publicly available link.
 
