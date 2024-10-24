@@ -1,8 +1,7 @@
 ---
 title: 'Recommender Systems based on Social Networks'
 date: 2024-06-26T20:08:50+02:00
-params:
-    math: true
+math: true
 draft: true
 bibFile: '/content/posts/bibfile.json'
 ---
