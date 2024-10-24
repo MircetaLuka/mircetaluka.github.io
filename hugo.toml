@@ -15,6 +15,7 @@ theme = ['PaperMod', 'hugo-cite']
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
+
 [params]
   math = true
 
