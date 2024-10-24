@@ -30,15 +30,6 @@ Firstly, it scrutinizes the training data used for the development of generative
 This paper provides an overview of the three main types of recommender systems, namely content-based, collaborative-filtering based and hybrid recommender systems, discussing their strengths and weaknesses. Additionally the incorporation of social networks in recommender systems is being elaborated, since traditional recommendation mechanisms tend to neglect social connections between users, which could significantly increase the accuracy of a recommendation system.</description>
     </item>
     <item>
-      <title>About me</title>
-      <link>//localhost:1313/about/</link>
-      <pubDate>Fri, 21 Jun 2024 20:04:40 +0200</pubDate>
-      <guid>//localhost:1313/about/</guid>
-      <description>In the summer of 2020, I graduated from the Akademisches Gymnasium in Innsbruck, where I completed both the Austrian Matura and the International Baccalaureate.
-The following year, I served my civilian service abroad at the Jewish Historical Museum in Belgrade, where I assisted in the digitization of the archives and contributed to projects promoting memorial culture in cooperation with the Austrian Embassy in Belgrade.
-During my education at the Akademisches Gymnasium, I volunteered for the Austrian Service Abroad as a tutor and regional representative, providing support to new prospective participants and organizing monthly meetings.</description>
-    </item>
-    <item>
       <title>Creating a QA Application using LangChain</title>
       <link>//localhost:1313/posts/rag-app/</link>
       <pubDate>Sat, 15 Jun 2024 12:39:02 +0200</pubDate>
