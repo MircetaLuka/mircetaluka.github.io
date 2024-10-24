@@ -7,6 +7,8 @@ theme = ['PaperMod', 'hugo-cite']
 
 [markup]
   [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
         enable = true
@@ -16,9 +18,6 @@ theme = ['PaperMod', 'hugo-cite']
 
 [params]
   math = true
-
-[minify]
-  disableJS = true
 
 [security]
   enableInlineShortcodes = false
