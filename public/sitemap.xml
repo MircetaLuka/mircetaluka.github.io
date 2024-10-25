@@ -2,29 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:60235/posts/legal-challenges-ai/</loc>
+    <loc>//localhost:51681/posts/legal-challenges-ai/</loc>
     <lastmod>2024-06-26T20:18:53+02:00</lastmod>
   </url><url>
-    <loc>//localhost:60235/</loc>
+    <loc>//localhost:51681/</loc>
     <lastmod>2024-06-26T20:18:53+02:00</lastmod>
   </url><url>
-    <loc>//localhost:60235/posts/</loc>
+    <loc>//localhost:51681/posts/</loc>
     <lastmod>2024-06-26T20:18:53+02:00</lastmod>
   </url><url>
-    <loc>//localhost:60235/posts/recommender-systems/</loc>
+    <loc>//localhost:51681/posts/recommender-systems/</loc>
     <lastmod>2024-06-26T20:08:50+02:00</lastmod>
   </url><url>
-    <loc>//localhost:60235/about/</loc>
+    <loc>//localhost:51681/about/</loc>
     <lastmod>2024-06-21T20:04:40+02:00</lastmod>
   </url><url>
-    <loc>//localhost:60235/posts/rag-app/</loc>
+    <loc>//localhost:51681/posts/rag-app/</loc>
     <lastmod>2024-06-15T12:39:02+02:00</lastmod>
   </url><url>
-    <loc>//localhost:60235/posts/aws-vpn/</loc>
+    <loc>//localhost:51681/posts/aws-vpn/</loc>
     <lastmod>2024-05-09T19:10:35+02:00</lastmod>
   </url><url>
-    <loc>//localhost:60235/categories/</loc>
+    <loc>//localhost:51681/categories/</loc>
   </url><url>
-    <loc>//localhost:60235/tags/</loc>
+    <loc>//localhost:51681/tags/</loc>
   </url>
 </urlset>
