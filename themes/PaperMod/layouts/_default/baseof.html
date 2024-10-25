@@ -21,7 +21,9 @@
 {{- end -}}
 " id="top"
 >
-{{- partial "math.html" . }}
+{{ if or .Params.math .Site.Params.math }}
+    {{ partial "math.html" . }}
+{{ end }}
     
     {{- partialCached "header.html" . .Page -}}
    
