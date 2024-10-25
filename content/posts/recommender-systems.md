@@ -151,6 +151,8 @@ the Pearson Correlation Coefficient. {{< cite "tang2013social" >}}
 
 The Pearson correlation coefficient between two users \(u\) and \(v\) is calculated as follows:
 
+The Pearson correlation coefficient between two users \(u\) and \(v\) is calculated as follows:
+
 \[
 \text{Pearson}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}
 \]
