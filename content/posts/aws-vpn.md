@@ -74,11 +74,11 @@ Now the proxy tunnel has been set up succesfully. The only thing missing is to s
 To set up Firefox to tunnel traffic through port 1337, follow these steps:
 
 1. Open your Firefox browser and navigate to the settings tab.
-![Image](./images/setting.png)
+![Image](../images/setting.png)
 2. In the search bar, enter the keyword "proxy" and click on the corresponding settings option.
-![Image](./images/search.png)
+![Image](../images/search.png)
 3. In the proxy settings, configure the necessary parameters to tunnel the traffic through port 1337.
-![Image](./images/proxy.png)
+![Image](../images/proxy.png)
 4. Save the settings.
 
 Once you have completed these steps, you have successfully set up a proxy tunnel to the remote instance. You can now browse the web with the location being the remote instance's data center.

@@ -95,7 +95,7 @@ In this section we are going to delve into the three main kinds of
 recommender systems and elaborate their main characteristics as well as
 the metrics associated with them.
 
-![An example for a user-item matrix from.](images/userItemMatrix.png)
+![An example for a user-item matrix from.](../images/userItemMatrix.png)
 Figure 1: *An example for a user-item matrix.*
 
 ## Content Based Recommender Systems
@@ -218,7 +218,7 @@ to them. This approach aligns with the homophily principle, which
 suggests that users with social ties often share similar preferences.
 {{< cite "sun2015recommender" >}}
 
-![An example for social network displaying user's and items.](images/socialNetwork.png)
+![An example for social network displaying user's and items.](../images/socialNetwork.png)
 Figure 2: *An example for a social network displaying user's and items.*
 
 ## Algorithm Steps

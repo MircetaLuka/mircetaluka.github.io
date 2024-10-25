@@ -26,7 +26,7 @@ We can split the Workflow of our RAG Pipeline into 5 steps.
 2. **Split**: We will divide the loaded data into smaller chunks to facilitate searching in the Vector space where it will be embedded. In this project we are going to use the _RecursiveTextCharacterSplitter_
 
 3. **Store**: In this step, we will utilize a VectorStore to store our data chunks. To achieve this, we will employ an embeddings model. Essentially, we preprocess the data chunks and embed them into a VectorSpace using the chosen embeddings model, which in this case is provided by Google. This enables us to perform operations such as finding the k-nearest neighbor to a Vector.
-![Image](./images/rag_indexing-8160f90a90a33253d0154659cf7d453f.png)
+![Image](../images/rag_indexing-8160f90a90a33253d0154659cf7d453f.png)
 *Figure 1: Visual representation of the Indexing Workflow.*
 *Source: https://python.langchain.com/v0.2/docs/tutorials/rag/*
 
@@ -40,7 +40,7 @@ We can split the Workflow of our RAG Pipeline into 5 steps.
 
 
 
-![Image](./images/rag_retrieval_generation-1046a4668d6bb08786ef73c56d4f228a.png)
+![Image](../images/rag_retrieval_generation-1046a4668d6bb08786ef73c56d4f228a.png)
 *Figure 2: Visual representation of the Retrieval and Generation Workflow.*
 
 *Source: https://python.langchain.com/v0.2/docs/tutorials/rag/*
