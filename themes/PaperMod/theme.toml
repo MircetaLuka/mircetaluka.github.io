@@ -39,6 +39,8 @@ features = [
 ]
 min_version = "0.112.4"
 
+[params]
+  math = true
 [author]
   name = "Aditya Telange"
   homepage = "https://github.com/adityatelange/"
