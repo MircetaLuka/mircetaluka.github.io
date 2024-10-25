@@ -149,15 +149,13 @@ item based methods. One of the most widely used techniques for tackling
 the problem of computing the similarity between two users or items is
 the Pearson Correlation Coefficient. {{< cite "tang2013social" >}}
 
-The Pearson correlation coefficient between two users \\(u\\) and \\(v\\) is
-calculated as follows:
+The Pearson correlation coefficient between two users \(u\) and \(v\) is calculated as follows:
 
-\\(\text{Pearson}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}\\)
+\[
+\text{Pearson}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}
+\]
 
-where \\(r_{u,i}\\) is the rating given by user \\(u\\) to item \\(i\\), \\(r_{v,i}\\)
-is the rating given by user \\(v\\) to item \\(i\\), \\({r}_u\\) is the average
-rating of user \\(u\\), \\({r}_v\\) is the average rating of user \\(v\\), and
-\\(I_{uv}\\) is the set of items rated by both users \\(u\\) and \\(v\\).
+where \(r_{u,i}\) is the rating given by user \(u\) to item \(i\), \(r_{v,i}\) is the rating given by user \(v\) to item \(i\), \(\bar{r}_u\) is the average rating of user \(u\), \(\bar{r}_v\) is the average rating of user \(v\), and \(I_{uv}\) is the set of items rated by both users \(u\) and \(v\).
 
 
 
