@@ -39,13 +39,6 @@ features = [
 ]
 min_version = "0.112.4"
 
-[params]
-  math = true
-[author]
-  name = "Aditya Telange"
-  homepage = "https://github.com/adityatelange/"
-
-
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -59,6 +52,9 @@ min_version = "0.112.4"
 
 [params]
   math = true
+[author]
+  name = "Aditya Telange"
+  homepage = "https://github.com/adityatelange/"
 
 # If porting an existing theme
 [original]
