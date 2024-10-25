@@ -2,7 +2,7 @@
 title: 'Recommender Systems based on Social Networks'
 date: 2024-06-26T20:08:50+02:00
 params:
-    math: true
+    math: mathjax
 draft: false
 bibFile: '/content/posts/bibfile.json'
 ---
@@ -153,14 +153,15 @@ the Pearson Correlation Coefficient. {{< cite "tang2013social" >}}
 The Pearson correlation coefficient between two users \(u\) and \(v\) is
 calculated as follows:
 
-\(\text{Pearson}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}\)
+$$
+Pearson (u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}
+$$
 
-where \(r_{u,i}\) is the rating given by user \(u\) to item \(i\), \(r_{v,i}\)
-is the rating given by user \(v\) to item \(i\), \({r}_u\) is the average
-rating of user \(u\), \({r}_v\) is the average rating of user \(v\), and
-\(I_{uv}\) is the set of items rated by both users \(u\) and \(v\).
+$$
+r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}}
+$$
 
-
+where \(r_{u,i}\) is the rating given by user \(u\) to item \(i\), \(r_{v,i}\) is the rating given by user \(v\) to item \(i\), \(\bar{r}_u\) is the average rating of user \(u\), \(\bar{r}_v\) is the average rating of user \(v\), and \(I_{uv}\) is the set of items rated by both users \(u\) and \(v\).
 
 After computing the correlation score, we can predict the missing
 ratings by aggregating the ratings of the k-nearest neighbours of the
