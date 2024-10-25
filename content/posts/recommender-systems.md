@@ -149,15 +149,15 @@ item based methods. One of the most widely used techniques for tackling
 the problem of computing the similarity between two users or items is
 the Pearson Correlation Coefficient. {{< cite "tang2013social" >}}
 
-The Pearson correlation coefficient between two users \(u\) and \(v\) is
+The Pearson correlation coefficient between two users \\(u\\) and \\(v\\) is
 calculated as follows:
 
-\(\text{Pearson}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}\)
+\\(\text{Pearson}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}\\)
 
-where \(r_{u,i}\) is the rating given by user \(u\) to item \(i\), \(r_{v,i}\)
-is the rating given by user \(v\) to item \(i\), \({r}_u\) is the average
-rating of user \(u\), \({r}_v\) is the average rating of user \(v\), and
-\(I_{uv}\) is the set of items rated by both users \(u\) and \(v\).
+where \\(r_{u,i}\\) is the rating given by user \\(u\\) to item \\(i\\), \\(r_{v,i}\\)
+is the rating given by user \\(v\\) to item \\(i\\), \\({r}_u\\) is the average
+rating of user \\(u\\), \\({r}_v\\) is the average rating of user \\(v\\), and
+\\(I_{uv}\\) is the set of items rated by both users \\(u\\) and \\(v\\).
 
 
 
@@ -230,27 +230,27 @@ recommender system are as follows {{< cite "konstas2009social" >}}:
     users and items. Edges represent interactions such as user ratings
     of items and social connections between users.
 
-2.  **Initialization**: Starting from any node \(x\) in the
+2.  **Initialization**: Starting from any node \\(x\\) in the
     graph, randomly follow a link to another node in each step.
 
 3.  **Random Walk with Restart**: In every step there is a probability
-    \(a\) that the walker will return to position \(x\) in
-    the next step. Initialize the probability vector \(p^t\) and
-    the column vector \(q\), which represents the starting node
+    \\(a\\) that the walker will return to position \\(x\\) in
+    the next step. Initialize the probability vector \\(p^t\\) and
+    the column vector \\(q\\), which represents the starting node
     with a value of 1 and all other values resulting in 0. Furthermore
     we should also introduce the column-normalized adjacency matrix
-    \(S\), where every entry of the matrix shows the probability
-    of a certain entry \(j\) being the next state with a given
-    state of \(i\)
+    \\(S\\), where every entry of the matrix shows the probability
+    of a certain entry \\(j\\) being the next state with a given
+    state of \\(i\\)
 
 4.  **Iteratively update the probability vector using the following
     formula until convergence:**
     $$\mathbf{p}^{t+1} = (1 - a) \mathbf{S} \mathbf{p}^t + a \mathbf{q}$$
-    where \(S\) is the transition matrix of the graph and
-    \(p\) is the restart probability
+    where \\(S\\) is the transition matrix of the graph and
+    \\(p\\) is the restart probability
 
 5.  **Recommendation**: Rank the items based on the final probability
-    vector \(p\).
+    vector \\(p\\).
 
 ## Determining Proximity of Nodes
 
