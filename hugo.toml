@@ -1,4 +1,4 @@
-baseURL = ''
+baseURL = 'mircetaluka.github.io'
 languageCode = 'en-us'
 title = 'Luka Mirčeta'
 theme = ['PaperMod', 'hugo-cite']
