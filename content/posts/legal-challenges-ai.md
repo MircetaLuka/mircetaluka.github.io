@@ -254,8 +254,7 @@ purposes.
 In conclusion, the paper has explored the legal challenges to generative
 artificial intelligence, focusing on both the training data used for
 such models and the outputs created by the same. The examined case
-studies in section [3](#casestudies){reference-type="ref"
-reference="casestudies"} have added real world relevance to the
+studies in section [3](#casestudies) have added real world relevance to the
 discussion, illustrating the complexities and real-world pitfalls to the
 current legal landscape.
 
