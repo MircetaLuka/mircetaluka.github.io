@@ -57,7 +57,7 @@ jobs:
             --baseURL "${{ steps.pages.outputs.base_url }}"
 
       - name: Upload artifact for GitHub Pages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
           path: ./public
@@ -70,7 +70,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
       - name: Output deployed URL
         run: echo "Site deployed to ${{ steps.deployment.outputs.page_url }}"
