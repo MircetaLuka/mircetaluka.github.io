@@ -15,7 +15,7 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Luka Mirčeta
-  description: "ExampleSite description"
+  description: "Personal Website of Luka Mirčeta"
   keywords: [Blog, Portfolio, PaperMod]
   author: Luka Mirčeta
   # author: ["Me", "You"] # multiple authors

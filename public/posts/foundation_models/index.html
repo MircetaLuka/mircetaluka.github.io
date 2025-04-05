@@ -1,0 +1,950 @@
+<!DOCTYPE html><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>KI in der Robotik: Foundation Models | Luka Mirčeta</title>
+<meta name="keywords" content="">
+<meta name="description" content="Einleitung In den letzten Jahren hat sich die Entwicklung Künstlicher Intelligenz (KI) rasant beschleunigt, wobei zunehmend Foundation-Modelle, wie zum Beispiel BERT ( Citation: Devlin,&#32;Chang &amp; al.,&#32; Devlin,&#32; J.,&#32; Chang,&#32; M.&#32;&amp;&#32;Toutanova,&#32; L. &#32; (n.d.). &#32; Bert: Pre-training of deep bidirectional transformers for language understanding. ) oder GPT-3 [@brown2020language], in den Fokus von Forschung und Industrie gerückt sind. Foundation-Modelle, die auf großmaßstäblichen Daten trainiert und in verschiedenen Anwendungsbereichen flexibel einsetzbar sind, bieten im Vergleich zu traditionellen, aufgabenspezifischen KI-Modellen, das Potenzial, essentielle Komponenten autonomer Roboter zu verbessern.">
+<meta name="author" content="Luka Mirčeta">
+<link rel="canonical" href="//localhost:1313/posts/foundation_models/">
+<meta name="google-site-verification" content="XYZabc">
+<meta name="yandex-verification" content="XYZabc">
+<meta name="msvalidate.01" content="XYZabc">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/static/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/static/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/static/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/static/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/static/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/foundation_models/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="KI in der Robotik: Foundation Models" />
+<meta property="og:description" content="Einleitung In den letzten Jahren hat sich die Entwicklung Künstlicher Intelligenz (KI) rasant beschleunigt, wobei zunehmend Foundation-Modelle, wie zum Beispiel BERT ( Citation: Devlin,&#32;Chang &amp; al.,&#32; Devlin,&#32; J.,&#32; Chang,&#32; M.&#32;&amp;&#32;Toutanova,&#32; L. &#32; (n.d.). &#32; Bert: Pre-training of deep bidirectional transformers for language understanding. ) oder GPT-3 [@brown2020language], in den Fokus von Forschung und Industrie gerückt sind. Foundation-Modelle, die auf großmaßstäblichen Daten trainiert und in verschiedenen Anwendungsbereichen flexibel einsetzbar sind, bieten im Vergleich zu traditionellen, aufgabenspezifischen KI-Modellen, das Potenzial, essentielle Komponenten autonomer Roboter zu verbessern." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost:1313/posts/foundation_models/" />
+<meta property="og:image" content="//localhost:1313/content/posts/images" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-01-25T20:18:53+02:00" />
+<meta property="article:modified_time" content="2025-01-25T20:18:53+02:00" /><meta property="og:site_name" content="Luka Mirčeta" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="//localhost:1313/content/posts/images" />
+<meta name="twitter:title" content="KI in der Robotik: Foundation Models"/>
+<meta name="twitter:description" content="Einleitung In den letzten Jahren hat sich die Entwicklung Künstlicher Intelligenz (KI) rasant beschleunigt, wobei zunehmend Foundation-Modelle, wie zum Beispiel BERT ( Citation: Devlin,&#32;Chang &amp; al.,&#32; Devlin,&#32; J.,&#32; Chang,&#32; M.&#32;&amp;&#32;Toutanova,&#32; L. &#32; (n.d.). &#32; Bert: Pre-training of deep bidirectional transformers for language understanding. ) oder GPT-3 [@brown2020language], in den Fokus von Forschung und Industrie gerückt sind. Foundation-Modelle, die auf großmaßstäblichen Daten trainiert und in verschiedenen Anwendungsbereichen flexibel einsetzbar sind, bieten im Vergleich zu traditionellen, aufgabenspezifischen KI-Modellen, das Potenzial, essentielle Komponenten autonomer Roboter zu verbessern."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "KI in der Robotik: Foundation Models",
+      "item": "//localhost:1313/posts/foundation_models/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "KI in der Robotik: Foundation Models",
+  "name": "KI in der Robotik: Foundation Models",
+  "description": "Einleitung In den letzten Jahren hat sich die Entwicklung Künstlicher Intelligenz (KI) rasant beschleunigt, wobei zunehmend Foundation-Modelle, wie zum Beispiel BERT ( Citation: Devlin,\u0026#32;Chang \u0026amp; al.,\u0026#32; Devlin,\u0026#32; J.,\u0026#32; Chang,\u0026#32; M.\u0026#32;\u0026amp;\u0026#32;Toutanova,\u0026#32; L. \u0026#32; (n.d.). \u0026#32; Bert: Pre-training of deep bidirectional transformers for language understanding. ) oder GPT-3 [@brown2020language], in den Fokus von Forschung und Industrie gerückt sind. Foundation-Modelle, die auf großmaßstäblichen Daten trainiert und in verschiedenen Anwendungsbereichen flexibel einsetzbar sind, bieten im Vergleich zu traditionellen, aufgabenspezifischen KI-Modellen, das Potenzial, essentielle Komponenten autonomer Roboter zu verbessern.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Einleitung In den letzten Jahren hat sich die Entwicklung Künstlicher Intelligenz (KI) rasant beschleunigt, wobei zunehmend Foundation-Modelle, wie zum Beispiel BERT ( Citation: Devlin, Chang \u0026 al., Devlin, J., Chang, M. \u0026 Toutanova, L. (n.d.). Bert: Pre-training of deep bidirectional transformers for language understanding. ) oder GPT-3 [@brown2020language], in den Fokus von Forschung und Industrie gerückt sind. Foundation-Modelle, die auf großmaßstäblichen Daten trainiert und in verschiedenen Anwendungsbereichen flexibel einsetzbar sind, bieten im Vergleich zu traditionellen, aufgabenspezifischen KI-Modellen, das Potenzial, essentielle Komponenten autonomer Roboter zu verbessern. Des Weiteren ermöglichen Foundation-Modelle sogenannte Zero-Shot [@huang2022language] Antworten, also die Fähigkeit, auch ohne spezifische Trainingsdaten auf neue Anforderungen zu reagieren. Gerade für autonome Roboter eröffnet dies neue Anwendungsbereiche, da diese Modelle es Robotern ermöglichen, sich selbständig und schnell auf neue Umgebungen einzustellen.\nZunächst wird ein Überblick über die Funktionsweise und Architektur von Foundation-Modellen gegeben. Diese werden dann mit traditionellen, aufgabenspezifischen KI-Modellen verglichen, wobei dargestellt wird, wie traditionelle KI-Modelle, die in der Robotik zum Einsatz kommen, oft aufwendig trainiert und spezifiziert werden müssen, um einzelnen Anforderungen gerecht zu werden. Dieser Prozess ist sehr ressourcenintensiv und teuer, daher würde es sich anbieten, Foundation-Modelle, welche bereits auf großmaßstäblichen Daten trainiert wurden, mit sogenannten nachgelagerten Aufgaben [@firoozi2023foundation] auf den spezifischen Kontext abzustimmen (fine-tuning).\nEs sei angemerkt, dass die Arbeit weder einen Schwerpunkt auf Trainingsalgorithmen und –techniken von Foundation-Modellen legt, noch diese Themen im Detail behandelt.\nEin weiterer Teil der Arbeit beschäftigt sich mit den Anwendungsmöglichkeiten von Foundation-Modellen in der Robotik. Dabei werden insbesondere die multimodalen und Zero-Shot-Fähigkeiten dieser Modelle untersucht und deren Relevanz für den Einsatz in der Robotik erläutert.\nDiese Anwendungsbereiche werden jedoch durch bestimmte Herausforderungen relativiert, was den Einsatz von Foundation-Modellen in sicherheitskritischen Robotikanwendungen erschwert [@bommasani2022opportunitiesrisksfoundationmodels]. Die Arbeit geht daher auch auf die Risiken und Grenzen des Einsatzes von Foundation-Modellen in der Robotik ein und legt dabei einen Schwerpunkt auf das Problem der sogenannten Halluzinationen [@rawte2023survey] – also der Ausgabe von plausiblen Antworten, welche jedoch nicht auf der Realität basieren und faktisch falsch sind.\nZum Abschluss werden Fallstudien aus der Praxis vorgestellt, die den Einsatz von Foundation-Modellen in Robotikanwendungen veranschaulichen und das Potenzial sowie bestehende Limitationen verdeutlichen. Ziel ist es, anhand der praktischen Beispiele zu zeigen, wie Foundation-Modelle zukünftig auch in der realen Welt Relevanz entfalten können.\nFoundation-Modelle Um Unklarheiten im weiteren Verlauf dieser Arbeit zu vermeiden, wird zunächst ein Überblick über die verschiedenen Teilbereiche der Künstlichen Intelligenz gegeben. Künstliche Intelligenz (KI) ist ein übergeordneter Begriff, unter den verschiedene Technologien fallen. Dazu gehört Machine Learning (ML), das traditionelle Algorithmen zur Verarbeitung von Daten verwendet. Innerhalb des ML gibt es Deep Learning (DL), eine Klasse von Algorithmen, die auf künstlichen neuronalen Netzwerken basieren. Eine weitere Spezialisierung innerhalb des DL sind die sogenannten Foundation-Modelle. Diese wurden auf großmaßstäblichen Daten trainiert und dienen als universelle Basis, auf der spezifische Anwendungen mittels Fine-Tuning aufgebaut werden können, ohne dass ein neues Modell vollständig mit annotierten Daten trainiert werden muss.\nFoundation-Modelle bieten durch ihre multimodalen Fähigkeiten und ihre Vielseitigkeit ein breites Spektrum an Anwendungsmöglichkeiten, ähnlich einem Schweizer Taschenmesser der Künstlichen Intelligenz. Sie können eine Vielzahl von Aufgaben bewältigen, jedoch sind sie nicht frei von Herausforderungen und Risiken. Diese Limitationen und potenziellen Gefahren werden in Abschnitt 3{reference-type=“ref” reference=“sec:risiken-und-grenzen”} ausführlich diskutiert.\nTransformer-Architektur Die Transformer-Architektur, auf der viele moderne Foundation-Modelle basieren, wurde erstmals im Jahr 2017 von einem Entwicklerteam bei Google vorgestellt [@vaswani2023attentionneed]. Diese Architektur markierte einen Wendepunkt in der Entwicklung von KI-Systemen, da sie das Verständnis von Daten grundlegend revolutionierte und bisherige Architekturen wie Gated Recurrent Units [@chung2014empirical] und Long-Short-Term Memory [@hochreiter1997long] durch die Verwendung von position embeddings übertroffen hat. Ein prominentes Beispiel für ein Foundation-Modell, das auf dieser Architektur aufbaut, ist der Generative Pre-trained Transformer (GPT). Die Transformer-Architektur zeichnet sich insbesondere durch das Konzept der Aufmerksamkeit (Attention-Mechanism) aus, das es ermöglicht, Abhängigkeiten zwischen unterschiedlichen Datenpunkten effektiv zu modellieren, ohne dabei unter einer Short-Term Memory zu leiden. Dadurch wurde sie zur bevorzugten Grundlage für zahlreiche Foundation-Modelle, die in unterschiedlichen Anwendungen, einschließlich der Robotik, eingesetzt werden.\nDas zentrale Problem, das durch die Einführung der Transformer-Architektur adressiert wurde, ist die Fähigkeit, den Zusammenhang einzelner Wörter in einem Satz korrekt zu erfassen. Diese Kontextabhängigkeit wird durch den Einsatz des sogenannten Aufmerksamkeitsmechanismus (Attention Mechanism) bewältigt, der es ermöglicht, semantische Beziehungen [@Wang_Wang_Chen_Wang_Kuo_2019] zwischen Wörtern dynamisch zu modellieren. Darüber hinaus erlaubt dieser Mechanismus die gleichzeitige Verarbeitung aller Wörter eines Satzes, was die Effizienz der Datenverarbeitung erhöht und die Trainingszeit deutlich verkürzt.\nDie Transformer-Architektur basiert auf einer Encoder-Decoder-Struktur. In Abbildung 2{reference-type=“ref” reference=“fig:transformer”} wurde eine visuelle Darstellung der Transformer-Architektur dargestellt.\nIn der Input Embedding Schicht des Transformers wird das Positional Encoding hinzugefügt, welches im Gegensatz zu rekurrenten Architekturen nicht sequenziell arbeitet. Stattdessen werden die positionsbezogenen Informationen durch die Verwendung von Sinus- und Cosinus-Funktionen in die Eingaberepräsentationen integriert, um die Reihenfolge der Tokens im Input korrekt zu berücksichtigen.\nDer Encoder setzt sich hauptsächlich aus zwei Modulen zusammen, der Multi-Headed-Attention Schicht und einem Feed-Forward Netzwerk.\nDie Multi-Headed-Attention-Schicht nutzt intern den Self-Attention-Mechanismus, der es dem Modell ermöglicht, semantische Abhängigkeiten und Beziehungen zwischen den Wörtern einer Eingabesequenz zu erfassen und zu modellieren. Dieser Mechanismus berechnet für jedes Wort in der Sequenz die Relevanz aller anderen Wörter, wodurch das Modell kontextuelle Informationen dynamisch berücksichtigt. Die resultierenden Aufmerksamkeitsgewichte werden anschließend an das nachfolgende Feed-Forward Netzwerk weitergegeben, das die Vektordarstellung weiter transformiert. Eine visuelle Darstellung der Multi-Headed-Attention-Schicht ist in Abbildung 1{reference-type=“ref” reference=“fig:multihead”} zu finden.\nFür die erfolgreiche Durchführung des Self-Attention-Mechanismus wird der Eingabevektor in drei voneinander abhängige, aber getrennte Repräsentationen unterteilt: Query, Key und Value. Diese Aufteilung ermöglicht es dem Modell, die Relevanz jedes Tokens im Kontext der gesamten Eingabesequenz zu berechnen. Ein anschauliches Beispiel für dieses Konzept ist die Funktionsweise einer Suchmaschine, bei der die Query mit einer Sammlung von Keys verglichen wird, um die relevantesten Values (also die Ausgaben) zu ermitteln.\nDie Kernoperation des Self-Attention-Mechanismus ist die Berechnung einer Scores-Matrix durch das Dot-Produkt der Query- und Key-Vektoren. Diese Scores reflektieren die Ähnlichkeit oder Relevanz zwischen den einzelnen Tokens. Die berechneten Scores werden anschließend skaliert, um eine numerische Stabilität zu gewährleisten. Diese skalierte Aufmerksamkeitsmatrix wird dann mit einer Softmax-Funktion normalisiert, wodurch die Scores in Wahrscheinlichkeiten umgewandelt werden, die zwischen 0 und 1 liegen. Höhere Werte spiegeln eine stärkere Aufmerksamkeit auf bestimmte Tokens wider, während niedrigere Werte eine geringere Relevanz anzeigen.\n{#fig:multihead width=“40%”}\nFür die Durchführung der Multi-Headed-Attention-Operation werden die Query-, Key- und Value-Vektoren in N verschiedene Vektoren unterteilt. Der Self-Attention-Mechanismus wird anschließend parallel auf allen N Vektoren angewendet. Die resultierenden Ausgabedaten dieser unterschiedlichen Attention-Köpfe werden miteinander konkateniert. Dieser zusammengesetzte Vektor wird anschließend mit dem ursprünglichen Positional Encoding kombiniert, was als Residual Connection bezeichnet wird.\nDer Encoder [@vaswani2023attentionneed] dient dazu, Eingabedaten wie Texte oder Bilder unter Berücksichtigung des Aufmerksamkeitsmechanismus in eine abstrahierte Darstellung umzuwandeln. Durch die parallele Verarbeitung von Daten, die den sequentiellen Ansatz früherer Modelle ersetzt, wird eine deutliche Beschleunigung der Modelltrainings und -inferenz erreicht. Diese Innovation hat die Grundlagen der natürlichen Sprachverarbeitung und anderer KI-Anwendungen nachhaltig verändert.\nDer Decoder setzt sich aus zwei Multi-Headed-Attention Schichten und einem Feed-Forward Netzwerk zusammen, wobei Connection Residuals und Normalisierungen nach jeder Subschicht stattfinden.\nDie Ausgabe des Decoders wird autoregressiv erzeugt, wobei der Decoder in jeder Iteration auf die vorherigen Token zugreift, um das nächste Token zu generieren. Zu Beginn wird die Eingabe, ähnlich wie im Encoder, durch den Multi-Headed-Attention-Mechanismus in eine abstrahierte Repräsentation überführt, die sowohl semantische als auch positionelle Informationen enthält. Um sicherzustellen, dass bei der Berechnung der Aufmerksamkeitsgewichte keine zukünftigen Token die Ausgabe beeinflussen, wird die Self-Attention-Schicht mittels Matrixmultiplikation maskiert.\nAnschließend folgt eine Cross-Attention-Komponente, bei der der Output des Encoders als Query- und Value-Vektoren verwendet wird, während der Output der ersten Self-Attention-Schicht des Decoders als Key-Vektor dient. Dieser Mechanismus ermöglicht es dem Decoder, die relevanten Informationen aus der Encoderausgabe zu extrahieren, um die nächste Token-Vorhersage zu treffen.\nDie resultierenden Informationen werden danach in ein Feed-Forward Netzwerk weitergeleitet, das die Repräsentation weiterverarbeitet. Schließlich wird das Ergebnis durch eine lineare Schicht geführt, gefolgt von einer Softmax-Funktion, die die Ausgabe in Wahrscheinlichkeiten umwandelt. Diese Wahrscheinlichkeiten repräsentieren die Wahrscheinlichkeit jedes möglichen nächsten Tokens, anhand derer der Decoder das nächste Token auswählt.\nIn dieser Arbeit wird auf eine detaillierte Erläuterung der Funktionsweise des Feed-Forward-Netzwerks sowie der genauen Funktionsweise der linearen Schichten verzichtet, da eine umfassende Darstellung dieser Aspekte den Rahmen der Untersuchung überschreiten würde. Für eine vertiefte Auseinandersetzung mit diesen Themen wird auf das originale Paper von Google verwiesen [@vaswani2023attentionneed].\n![Aufbau der Transformer-Architektur. Dieses Bild wurde aus [@vaswani2023attentionneed] entnommen.](images/Bildschirmfoto 2024-12-10 um 12.12.38.png){#fig:transformer width=“70%”}\nAnwendungsmöglichkeiten von Foundation-Modellen in der Robotik Foundation-Modelle bieten in der Robotik das Potenzial, innovative Anwendungen zu ermöglichen, die die Grenzen traditioneller, aufgabenspezifischer Modelle erweitern. In diesem Abschnitt werden zentrale Fähigkeiten von Foundation-Modellen vorgestellt, die dazu beitragen können, die Entscheidungsfindung, Planung und Steuerung von Robotersystemen signifikant zu verbessern.\nMultimodale Fähigkeiten Der Begriff multimodal bezeichnet die Fähigkeit eines Modells, heterogene Eingabetypen zu akzeptieren, wie zum Beispiel Bilder, Texte oder Audiodateien [@sun2023survey]. Diese unterschiedlichen Datentypen werden in kompakte, homogene Darstellungen umgewandelt, mit denen ein Foundation-Modell weiterarbeiten kann. Ein Modell, das in der Lage ist, mehrere Datentypen gleichzeitig zu verarbeiten, kann verschiedene Informationsquellen kombinieren und so ein besseres Verständnis für komplexe Zusammenhänge entwickeln. Dies führt zu einer erweiterten Anwendungsfähigkeit, da die Modelle sowohl visuelle als auch sprachliche oder akustische Daten effektiv integrieren können, was in vielen Szenarien der Robotik von entscheidender Bedeutung ist [@firoozi2023foundation]. Visual-Language-Modell CLIP [@clipradford2021learning] ist ein multimodales Foundation-Modell, welches die Fähigkeit besitzt, Ähnlichkeitswerte zwischen textuellen Beschreibungen und Bildern zu berechnen. Dieses Modell kombiniert visuelle und sprachliche Informationen, um semantische Beziehungen zwischen den beiden Modalitäten zu erkennen und zu analysieren. Ein autonomer Roboter, der mit multimodalen Fähigkeiten ausgestattet ist, könnte beispielsweise in einer Lagerhalle eingesetzt werden, um komplexe Aufgaben effizient zu lösen. Ein multimodales Foundation-Modell ermöglicht es dem Roboter, textuelle Anweisungen zu interpretieren. Dabei werden Bilddaten, die durch eine integrierte Kamera erfasst werden, mit den textuellen Informationen aus dem Befehl kombiniert. Diese Verknüpfung ermöglicht es dem Roboter beispielsweise, ein gelbes Paket korrekt zu identifizieren und die Anweisung präzise auszuführen. Solche Fähigkeiten demonstrieren, wie multimodale Foundation-Modelle zur Steigerung der Flexibilität und Genauigkeit autonomer Systeme beitragen können.\nZero-Shot Fähigkeiten Der Begriff Zero-Shot bezieht sich auf die Fähigkeit eines Foundation-Modells, Aufgaben zu bewältigen, ohne dass es für diese spezifischen Aufgaben explizit trainiert wurde. Dies bedeutet, dass das Modell in der Lage ist, neue Aufgaben oder Downstream-Tasks abzuleiten, ohne dass neue, spezialisierte Testdaten erforderlich sind. Diese Fähigkeit ermöglicht es, das Modell auf unbekannte Szenarien anzuwenden, was insbesondere in der Robotik von Bedeutung ist [@cui2022can]. Ein autonomer Roboter könnte beispielsweise seine Umgebung erkennen und sich an diese anpassen, ohne zuvor explizit auf diese Umgebung trainiert worden zu sein. Ein Roboter, der als Assistenzsystem an einem Infopoint eingesetzt wird und in Echtzeit Audiodaten über ein integriertes Mikrofon verarbeitet sowie akustische Ausgaben generiert, könnte beispielsweise auf Anfragen reagieren, ohne vorher explizit auf diese trainiert worden zu sein. Ein solcher Roboter könnte spezifische Aufgaben übernehmen, wie das Bringen von Mahlzeiten oder die Übergabe von Medikamenten in einem Krankenhaus, während er gleichzeitig allgemeine Fragen beantworten kann, etwa nach der Lage des nächsten Supermarkts oder Bäckers. Zero-Shot-Fähigkeiten bieten somit das Potenzial, Modelle flexibler und anpassungsfähiger in dynamischen und unerforschten Kontexten einzusetzen.\nFoundation-Modelle im Vergleich mit traditionellen Machine Learning Modellen in der Robotik Traditionelle, aufgabenspezifische Machine-Learning-Modelle erfordern umfangreiche, detailliert annotierte Datensätze, um effektiv trainiert zu werden. Der Prozess der Datenerhebung, -strukturierung, -bereinigung und -annotation ist jedoch äußerst zeit- und ressourcenintensiv. Diese Modelle sind zudem in ihrem Anwendungsbereich stark eingeschränkt, da sie ausschließlich auf eine spezifische Aufgabe ausgerichtet sind. Beispielsweise kann ein auf die Bildverarbeitung spezialisiertes Modell keine textuellen Eingaben verarbeiten, ohne dass ein vollständig neues Modell entwickelt und trainiert wird. Diese Limitierung macht traditionelle Modelle weniger flexibel und erhöht den Aufwand bei der Implementierung neuer Anwendungen erheblich.\nIm Gegensatz dazu bieten Foundation-Modelle eine signifikante Verbesserung, da sie auf großen, vielfältigen und multimodalen Datensätzen vortrainiert werden und dadurch eine breite Generalisierungsfähigkeit aufweisen. Sie können mehrere Aufgaben lösen, oft ohne zusätzliche aufwändige Annotierungen, dank ihrer Zero-Shot-Fähigkeiten. Darüber hinaus sind sie in der Lage, multimodale Eingaben, wie Text, Bild und Audio, gleichzeitig zu verarbeiten, was ihre Anwendbarkeit in verschiedensten Kontexten erweitert. Ein weiterer wesentlicher Vorteil von Foundation-Modellen ist ihre Skalierbarkeit. Die zugrunde liegende Transformer-Architektur, die in Abschnitt 2.1{reference-type=“ref” reference=“sec:transformer”} beschrieben wird, nutzt den Aufmerksamkeitsmechanismus, um große Datenmengen effizient und parallel zu verarbeiten. Dies steigert nicht nur die Effizienz der Modelle erheblich, sondern ermöglicht es auch, kleinere spezialisierte Modelle abzuleiten, ohne dass umfangreiche Datensammlungen und Annotationen erforderlich sind. Dadurch wird die Entwicklung neuer Anwendungen und der Transfer auf neue Domänen erleichtert.\nDiese Flexibilität und Effizienz machen Foundation-Modelle zu einem leistungsstarken Werkzeug, das die Limitierungen traditioneller Modelle überwindet und neue Möglichkeiten für Innovationen eröffnet.\nRisiken und Grenzen Foundation-Modelle werden typischerweise auf großmaßstäblichen Datensätzen aus dem Internet trainiert, die jedoch oft nur oberflächliche Informationen enthalten und nicht auf die spezifischen Anforderungen der Robotik ausgerichtet sind. Dies führt zu einer Herausforderung hinsichtlich der Datenknappheit für robotikspezifische Anwendungen von Foundation-Modellen. Um dieses Problem zu adressieren, wurden verschiedene Ansätze entwickelt. Ein solcher Ansatz ist Play-LMP [@playlynch2020learning], bei dem auf die Verwendung komplexer, annotierter Expertendemonstrationen verzichtet wird. Stattdessen werden unannotierte und unstrukturierte Play-Daten verwendet, die von einem menschlichen Operator bereitgestellt werden. Diese Daten bestehen aus einem aktuellen Weltzustand sowie einer Liste von Zielzuständen, die gemeinsam als Eingabe dienen, um Testdaten zu generieren, die für das Training von Robotern genutzt werden können.\nEin weiteres wesentliches Risiko beim Einsatz von Foundation-Modellen in der Robotik ist die Zuverlässigkeit der Modellvorhersagen. Aktuelle Foundation-Modelle sind anfällig für das Phänomen der Halluzination [@rawte2023survey], bei dem das Modell plausible, aber faktisch falsche Antworten generiert, die nicht mit der realen Welt übereinstimmen. Solche Fehler sind in Anwendungen, bei denen die Ausgaben des Modells in Echtzeit durch einen Menschen überprüft werden können, in gewissem Maße akzeptabel. In sicherheitskritischen Szenarien, wie etwa bei der Nutzung in autonomen Robotern, sind diese Fehler jedoch inakzeptabel. Eine sorgfältige Unsicherheitsquantifizierung ist daher ein entscheidender Schritt, um Foundation-Modelle sicher in Robotersysteme zu integrieren und ihre Zuverlässigkeit in praktischen, sicherheitsrelevanten Anwendungen zu gewährleisten.\nEs existieren verschiedene Ansätze, die auf dem Konzept der Unsicherheitsquantifizierung basieren, um das Problem fehlerhafter Ausgaben von Modellen zu mildern. Ein solcher Ansatz ist die instanzbasierte Unsicherheitsquantifizierung, bei der das Modell nicht nur eine Vorhersage trifft, sondern auch die Unsicherheit bezüglich dieser Vorhersage angibt. Ein Beispiel hierfür wäre ein autonom fahrender Roboter, der bei der Klassifikation eines Objekts ein Prediction Set zurückgibt, das etwa die Optionen „Fußgänger\" und „Fahrradfahrer\" umfasst. Dies bedeutet, dass das Modell unsicher ist, ob es sich bei der erkannten Entität um einen Fußgänger oder einen Fahrradfahrer handelt. In einem solchen Fall kann das Modell beide möglichen Ausgaben in Betracht ziehen und seine Entscheidungen entsprechend anpassen, um auf beide Szenarien vorbereitet zu sein [@firoozi2023foundation].\nEin weiteres zentrales Problem stellt das umfassende Testen von Robotersystemen dar, die auf Foundation-Modellen basieren. Dabei muss gewährleistet werden, dass alle relevanten Teilbereiche des Systems getestet werden, wobei der Fokus auf der Sicherheit sowohl vor der Inbetriebnahme als auch während des Betriebs und der Aktualisierung des Modells liegt. Zu den möglichen Ansätzen zur Sicherstellung dieser Sicherheitsanforderungen gehören rigorose Testverfahren, der Einsatz von Simulationen sowie die kontinuierliche Überwachung während des Betriebs [@firoozi2023foundation].\nFallstudien Ein aktuelles Beispiel für die Anwendung von Foundation-Modellen in der Robotik ist der humanoide Roboter, der vom Unternehmen Figure in Zusammenarbeit mit einem Foundation-Modell von OpenAI entwickelt wurde 1. In ihrem Masterplan beschreibt das Unternehmen die langfristigen Ziele und Visionen, die es verfolgt. Ein zentrales Anliegen von Figure ist die Bewältigung der gesellschaftlichen Herausforderung, dass eine zunehmende Zahl an gefährlichen und ungeliebten Arbeitsplätzen in der Zukunft nur schwer mit menschlicher Arbeitskraft gedeckt werden kann. Das Unternehmen verfolgt deshalb das Ziel, humanoide Roboter in genau diesen Arbeitsbereichen einzusetzen, um sowohl die Produktivität erheblich zu steigern als auch die Kosten zu senken. Die zugrunde liegende Idee ist, dass, wenn Roboter gefährliche oder wenig attraktive Tätigkeiten – wie etwa die Fließbandarbeit in der Automobilproduktion – übernehmen, erhebliche wirtschaftliche Einsparungen erzielt werden können, während gleichzeitig den Menschen die Möglichkeit gegeben wird, sich erfüllenderen Aufgaben zu widmen. Diese Perspektive ist jedoch nicht unumstritten und bedarf einer vertieften ethischen Auseinandersetzung sowie weiterführender Forschung.\nEin konkretes Beispiel für einen bereits entwickelten humanoiden Roboter von Figure ist der Figure01, der in Zusammenarbeit mit einem Modell von OpenAI entwickelt wurde. Dieser Roboter ermöglicht Sprach-zu-Sprach-Interaktionen, bei denen er über erlernte Verhaltensweisen zwischen Mensch und Maschine agiert. Dabei kann der Roboter Aufgaben entgegennehmen und diese eigenständig ausführen. Der Figure01 nutzt Künstliche Intelligenz, um durch Erfahrung und Training seine Verhaltensweisen kontinuierlich zu verbessern. Diese erlernten Verhaltensweisen umfassen sowohl die Art und Weise, wie der Roboter in unterschiedlichen Situationen reagiert, als auch die Durchführung spezifischer Aufgaben. Anstatt lediglich auf direkte Anweisungen zu reagieren, ist der Roboter in der Lage, nachzudenken und auf der Grundlage seiner bisherigen Erfahrungen rationale Schlüsse zu ziehen, um angemessene Antworten zu formulieren oder bestimmte Handlungen auszuführen.\n{#fig:image width=“70%”}\nEin weiterer praktischer Anwendungsfall für die Roboter von Figure ist die Zusammenarbeit mit der BMW Group, bei der humanoide Roboter des Typs Figure02 im Karosseriewerk von BMW eingesetzt werden. In diesem Szenario übernehmen die Roboter die Aufgabe, Blechteile in speziell entwickelte Vorrichtungen zu positionieren, die anschließend als Bestandteile der Karosserie montiert werden 2. Obwohl sich dieser Einsatz noch in der Testphase befindet, zeigt er das Potenzial, die Automobilindustrie in vielfältiger Weise zu unterstützen. Die Integration solcher humanoiden Roboter könnte langfristig die Effizienz und Präzision in Fertigungsprozessen erhöhen und zur Lösung von Problemen im Bereich des Arbeitskräftemangels sowie der Automatisierung von komplexen, repetitiven Aufgaben beitragen.\nZusammenfassung In dieser Arbeit wurde die Funktionsweise von Foundation-Modellen umfassend erläutert, wobei auch die zugrunde liegende Transformer-Architektur eingehend betrachtet wurde. Des Weiteren wurden zentrale Fähigkeiten von Foundation-Modellen, wie Multimodalität und Zero-Shot-Fähigkeiten, im Kontext der Robotik untersucht und deren Bedeutung für diese Disziplin herausgearbeitet. Dabei wurde ein Vergleich zwischen Foundation-Modellen und traditionellen Modellen gezogen, um aufzuzeigen, dass Foundation-Modelle aufgrund der Transformer-Architektur und ihrer spezifischen Fähigkeiten das Potenzial besitzen, die Robotik signifikant zu bereichern. Ein weiterer Fokus der Arbeit lag auf der Diskussion der Risiken und Einschränkungen, die mit dem Einsatz von Foundation-Modellen verbunden sind. Hierbei wurden Herausforderungen wie die Sicherstellung qualitativ hochwertiger Trainingsdaten, das Problem der Halluzinationen sowie die Unsicherheitsquantifizierung und das Testen von auf Foundation-Modellen basierenden Robotersystemen als zentrale Problembereiche identifiziert, denen sich Entwickler:innen stellen müssen, wenn diese Modelle in realen robotischen Anwendungen eingesetzt werden sollen. Abschließend wurden zwei Robotermodelle des Unternehmens Figure vorgestellt, die die Relevanz der behandelten Themen in der Praxis verdeutlichen und die Bedeutung dieser Forschungsrichtung unterstreichen. In Zukunft kann eine verstärkte Integration von Foundation-Modellen in der Robotik erwartet werden, insbesondere im Bereich der Automobilindustrie und anderer verwandter Industrien. Sofern die genannten Herausforderungen erfolgreich adressiert werden können, erscheint auch der Einsatz in sicherheitskritischen Anwendungen nicht ausgeschlossen.\nGenerative KI Offenlegung In dieser Arbeit wurde Generative KI (GenKI) für bestimmte Zwecke eingesetzt, um den Schreibprozess zu unterstützen. Die folgenden Anwendungen von GenKI wurden genutzt:\nZusammenfassungen: GenKI wurde verwendet, um Inhalte zusammenzufassen und eine Übersicht für den Autor zu erstellen. Dabei wurde das Ergebnis der Zusammenfassungen zu Informationszwecken genutzt, jedoch nicht direkt in der Arbeit übernommen.\nStilverbesserung: GenKI wurde eingesetzt, um die Qualität des Textes hinsichtlich Rechtschreibung, Grammatik und/oder Stil zu verbessern. Die Änderungen wurden überprüft und in den Text integriert, um die Lesbarkeit und Kohärenz zu optimieren.\nEs wird betont, dass alle verwendeten GenKI-Ausgaben sorgfältig geprüft und angepasst wurden, um sicherzustellen, dass der Inhalt den akademischen Standards und der wissenschaftlichen Integrität entspricht.\nhttps://www.figure.ai/ai[]{#note1 label=“note1”} ↩︎\nhttps://www.press.bmwgroup.com/deutschland/article/detail/T0444264DE/erfolgreicher-testeinsatz-humanoider-roboter-im-bmw-group-werk-spartanburg?language=de ↩︎\n",
+  "wordCount" : "3169",
+  "inLanguage": "en",
+  "image": "//localhost:1313/content/posts/images","datePublished": "2025-01-25T20:18:53+02:00",
+  "dateModified": "2025-01-25T20:18:53+02:00",
+  "author":{
+    "@type": "Person",
+    "name": "Luka Mirčeta"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/foundation_models/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Luka Mirčeta",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/static/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top"
+>
+
+    <script type="text/javascript">
+    MathJax = {
+      tex: {
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        processEscapes: true
+      },
+    };
+  </script>
+  <script
+      async
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"
+      integrity="sha384-+BSz3oj3ILMYvOBr16U9i0H4RZRmGyQQ+1q9eqr8T3skmAFrJk8GmgwgqlCZdNSo"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      type="text/javascript"></script>
+
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="Luka Mirčeta (Alt + H)">Luka Mirčeta</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/posts/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/luka-mir%c4%8deta-5621a2330/" title="LinkedIn">
+                    <span>LinkedIn</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      KI in der Robotik: Foundation Models
+    </h1>
+    <div class="post-meta"><span title='2025-01-25 20:18:53 +0200 +0200'>January 25, 2025</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;Luka Mirčeta
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#einleitung" aria-label="Einleitung">Einleitung</a></li>
+                <li>
+                    <a href="#foundation-modelle" aria-label="Foundation-Modelle">Foundation-Modelle</a><ul>
+                        
+                <li>
+                    <a href="#sec%3atransformer" aria-label="Transformer-Architektur">Transformer-Architektur</a></li>
+                <li>
+                    <a href="#anwendungsm%c3%b6glichkeiten-von-foundation-modellen-in-der-robotik" aria-label="Anwendungsmöglichkeiten von Foundation-Modellen in der Robotik">Anwendungsmöglichkeiten von Foundation-Modellen in der Robotik</a><ul>
+                        
+                <li>
+                    <a href="#multimodale-f%c3%a4higkeiten" aria-label="Multimodale Fähigkeiten">Multimodale Fähigkeiten</a></li>
+                <li>
+                    <a href="#zero-shot-f%c3%a4higkeiten" aria-label="Zero-Shot Fähigkeiten">Zero-Shot Fähigkeiten</a></li></ul>
+                </li>
+                <li>
+                    <a href="#foundation-modelle-im-vergleich-mit-traditionellen-machine-learning-modellen-in-der-robotik" aria-label="Foundation-Modelle im Vergleich mit traditionellen Machine Learning Modellen in der Robotik">Foundation-Modelle im Vergleich mit traditionellen Machine Learning Modellen in der Robotik</a></li></ul>
+                </li>
+                <li>
+                    <a href="#sec%3arisiken-und-grenzen" aria-label="Risiken und Grenzen">Risiken und Grenzen</a></li>
+                <li>
+                    <a href="#sec%3afallstudien" aria-label="Fallstudien">Fallstudien</a></li>
+                <li>
+                    <a href="#sec%3azusammenfassung" aria-label="Zusammenfassung">Zusammenfassung</a></li>
+                <li>
+                    <a href="#generative-ki-offenlegung" aria-label="Generative KI Offenlegung">Generative KI Offenlegung</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="einleitung">Einleitung<a hidden class="anchor" aria-hidden="true" href="#einleitung">#</a></h1>
+<p>In den letzten Jahren hat sich die Entwicklung Künstlicher Intelligenz
+(KI) rasant beschleunigt, wobei zunehmend Foundation-Modelle, wie zum
+Beispiel BERT 
+
+
+
+
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#devlin2018bert"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Jacob"><span itemprop="familyName">Devlin</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Ming-Wei"><span itemprop="familyName">Chang</span></span>
+                  <em>&amp; al.</em>,&#32;</a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/CreativeWork"
+      data-type="inproceedings"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Devlin</span>,&#32;
+    <meta itemprop="givenName" content="Jacob" />
+    J.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Chang</span>,&#32;
+    <meta itemprop="givenName" content="Ming-Wei" />
+    M.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Toutanova</span>,&#32;
+    <meta itemprop="givenName" content="Lee Kristina" />
+    L.</span>
+  &#32;
+  (n.d.).
+  &#32;<span itemprop="name">
+    <i>Bert: Pre-training of deep bidirectional transformers for language understanding</i></span>.
+  </span>
+
+</span></span>)</span>
+ oder GPT-3 [@brown2020language], in den
+Fokus von Forschung und Industrie gerückt sind. Foundation-Modelle, die
+auf großmaßstäblichen Daten trainiert und in verschiedenen
+Anwendungsbereichen flexibel einsetzbar sind, bieten im Vergleich zu
+traditionellen, aufgabenspezifischen KI-Modellen, das Potenzial,
+essentielle Komponenten autonomer Roboter zu verbessern. Des Weiteren
+ermöglichen Foundation-Modelle sogenannte Zero-Shot [@huang2022language]
+Antworten, also die Fähigkeit, auch ohne spezifische Trainingsdaten auf
+neue Anforderungen zu reagieren. Gerade für autonome Roboter eröffnet
+dies neue Anwendungsbereiche, da diese Modelle es Robotern ermöglichen,
+sich selbständig und schnell auf neue Umgebungen einzustellen.</p>
+<p>Zunächst wird ein Überblick über die Funktionsweise und Architektur von
+Foundation-Modellen gegeben. Diese werden dann mit traditionellen,
+aufgabenspezifischen KI-Modellen verglichen, wobei dargestellt wird, wie
+traditionelle KI-Modelle, die in der Robotik zum Einsatz kommen, oft
+aufwendig trainiert und spezifiziert werden müssen, um einzelnen
+Anforderungen gerecht zu werden. Dieser Prozess ist sehr
+ressourcenintensiv und teuer, daher würde es sich anbieten,
+Foundation-Modelle, welche bereits auf großmaßstäblichen Daten trainiert
+wurden, mit sogenannten nachgelagerten Aufgaben [@firoozi2023foundation]
+auf den spezifischen Kontext abzustimmen (fine-tuning).</p>
+<p>Es sei angemerkt, dass die Arbeit weder einen Schwerpunkt auf
+Trainingsalgorithmen und &ndash;techniken von Foundation-Modellen legt, noch
+diese Themen im Detail behandelt.</p>
+<p>Ein weiterer Teil der Arbeit beschäftigt sich mit den
+Anwendungsmöglichkeiten von Foundation-Modellen in der Robotik. Dabei
+werden insbesondere die multimodalen und Zero-Shot-Fähigkeiten dieser
+Modelle untersucht und deren Relevanz für den Einsatz in der Robotik
+erläutert.</p>
+<p>Diese Anwendungsbereiche werden jedoch durch bestimmte Herausforderungen
+relativiert, was den Einsatz von Foundation-Modellen in
+sicherheitskritischen Robotikanwendungen erschwert
+[@bommasani2022opportunitiesrisksfoundationmodels]. Die Arbeit geht
+daher auch auf die Risiken und Grenzen des Einsatzes von
+Foundation-Modellen in der Robotik ein und legt dabei einen Schwerpunkt
+auf das Problem der sogenannten Halluzinationen [@rawte2023survey] &ndash;
+also der Ausgabe von plausiblen Antworten, welche jedoch nicht auf der
+Realität basieren und faktisch falsch sind.</p>
+<p>Zum Abschluss werden Fallstudien aus der Praxis vorgestellt, die den
+Einsatz von Foundation-Modellen in Robotikanwendungen veranschaulichen
+und das Potenzial sowie bestehende Limitationen verdeutlichen. Ziel ist
+es, anhand der praktischen Beispiele zu zeigen, wie Foundation-Modelle
+zukünftig auch in der realen Welt Relevanz entfalten können.</p>
+<h1 id="foundation-modelle">Foundation-Modelle<a hidden class="anchor" aria-hidden="true" href="#foundation-modelle">#</a></h1>
+<p>Um Unklarheiten im weiteren Verlauf dieser Arbeit zu vermeiden, wird
+zunächst ein Überblick über die verschiedenen Teilbereiche der
+Künstlichen Intelligenz gegeben. Künstliche Intelligenz (KI) ist ein
+übergeordneter Begriff, unter den verschiedene Technologien fallen. Dazu
+gehört Machine Learning (ML), das traditionelle Algorithmen zur
+Verarbeitung von Daten verwendet. Innerhalb des ML gibt es Deep Learning
+(DL), eine Klasse von Algorithmen, die auf künstlichen neuronalen
+Netzwerken basieren. Eine weitere Spezialisierung innerhalb des DL sind
+die sogenannten Foundation-Modelle. Diese wurden auf großmaßstäblichen
+Daten trainiert und dienen als universelle Basis, auf der spezifische
+Anwendungen mittels Fine-Tuning aufgebaut werden können, ohne dass ein
+neues Modell vollständig mit annotierten Daten trainiert werden muss.</p>
+<p>Foundation-Modelle bieten durch ihre multimodalen Fähigkeiten und ihre
+Vielseitigkeit ein breites Spektrum an Anwendungsmöglichkeiten, ähnlich
+einem Schweizer Taschenmesser der Künstlichen Intelligenz. Sie können
+eine Vielzahl von Aufgaben bewältigen, jedoch sind sie nicht frei von
+Herausforderungen und Risiken. Diese Limitationen und potenziellen
+Gefahren werden in Abschnitt
+<a href="#sec:risiken-und-grenzen">3</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;sec:risiken-und-grenzen&rdquo;} ausführlich diskutiert.</p>
+<h2 id="sec:transformer">Transformer-Architektur<a hidden class="anchor" aria-hidden="true" href="#sec:transformer">#</a></h2>
+<p>Die Transformer-Architektur, auf der viele moderne Foundation-Modelle
+basieren, wurde erstmals im Jahr 2017 von einem Entwicklerteam bei
+Google vorgestellt [@vaswani2023attentionneed]. Diese Architektur
+markierte einen Wendepunkt in der Entwicklung von KI-Systemen, da sie
+das Verständnis von Daten grundlegend revolutionierte und bisherige
+Architekturen wie <em>Gated Recurrent Units</em> [@chung2014empirical] und
+<em>Long-Short-Term Memory</em> [@hochreiter1997long] durch die Verwendung von
+<strong>position embeddings</strong> übertroffen hat. Ein prominentes Beispiel für
+ein Foundation-Modell, das auf dieser Architektur aufbaut, ist der
+<em>Generative Pre-trained Transformer (GPT)</em>. Die Transformer-Architektur
+zeichnet sich insbesondere durch das Konzept der <em>Aufmerksamkeit</em>
+(Attention-Mechanism) aus, das es ermöglicht, Abhängigkeiten zwischen
+unterschiedlichen Datenpunkten effektiv zu modellieren, ohne dabei unter
+einer <em>Short-Term Memory</em> zu leiden. Dadurch wurde sie zur bevorzugten
+Grundlage für zahlreiche Foundation-Modelle, die in unterschiedlichen
+Anwendungen, einschließlich der Robotik, eingesetzt werden.</p>
+<p>Das zentrale Problem, das durch die Einführung der
+Transformer-Architektur adressiert wurde, ist die Fähigkeit, den
+Zusammenhang einzelner Wörter in einem Satz korrekt zu erfassen. Diese
+Kontextabhängigkeit wird durch den Einsatz des sogenannten
+Aufmerksamkeitsmechanismus (Attention Mechanism) bewältigt, der es
+ermöglicht, semantische Beziehungen [@Wang_Wang_Chen_Wang_Kuo_2019]
+zwischen Wörtern dynamisch zu modellieren. Darüber hinaus erlaubt dieser
+Mechanismus die gleichzeitige Verarbeitung aller Wörter eines Satzes,
+was die Effizienz der Datenverarbeitung erhöht und die Trainingszeit
+deutlich verkürzt.</p>
+<p>Die Transformer-Architektur basiert auf einer Encoder-Decoder-Struktur.
+In Abbildung <a href="#fig:transformer">2</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;fig:transformer&rdquo;} wurde eine visuelle Darstellung der
+Transformer-Architektur dargestellt.</p>
+<p>In der <em>Input Embedding</em> Schicht des Transformers wird das <em>Positional
+Encoding</em> hinzugefügt, welches im Gegensatz zu rekurrenten Architekturen
+nicht sequenziell arbeitet. Stattdessen werden die positionsbezogenen
+Informationen durch die Verwendung von Sinus- und Cosinus-Funktionen in
+die Eingaberepräsentationen integriert, um die Reihenfolge der Tokens im
+Input korrekt zu berücksichtigen.</p>
+<p>Der Encoder setzt sich hauptsächlich aus zwei Modulen zusammen, der
+<em>Multi-Headed-Attention</em> Schicht und einem <em>Feed-Forward Netzwerk</em>.</p>
+<p>Die Multi-Headed-Attention-Schicht nutzt intern den
+Self-Attention-Mechanismus, der es dem Modell ermöglicht, semantische
+Abhängigkeiten und Beziehungen zwischen den Wörtern einer Eingabesequenz
+zu erfassen und zu modellieren. Dieser Mechanismus berechnet für jedes
+Wort in der Sequenz die Relevanz aller anderen Wörter, wodurch das
+Modell kontextuelle Informationen dynamisch berücksichtigt. Die
+resultierenden Aufmerksamkeitsgewichte werden anschließend an das
+nachfolgende Feed-Forward Netzwerk weitergegeben, das die
+Vektordarstellung weiter transformiert. Eine visuelle Darstellung der
+Multi-Headed-Attention-Schicht ist in Abbildung
+<a href="#fig:multihead">1</a>{reference-type=&ldquo;ref&rdquo; reference=&ldquo;fig:multihead&rdquo;} zu
+finden.</p>
+<p>Für die erfolgreiche Durchführung des Self-Attention-Mechanismus wird
+der Eingabevektor in drei voneinander abhängige, aber getrennte
+Repräsentationen unterteilt: <em>Query, Key und Value</em>. Diese Aufteilung
+ermöglicht es dem Modell, die Relevanz jedes Tokens im Kontext der
+gesamten Eingabesequenz zu berechnen. Ein anschauliches Beispiel für
+dieses Konzept ist die Funktionsweise einer Suchmaschine, bei der die
+Query mit einer Sammlung von Keys verglichen wird, um die relevantesten
+Values (also die Ausgaben) zu ermitteln.</p>
+<p>Die Kernoperation des Self-Attention-Mechanismus ist die Berechnung
+einer Scores-Matrix durch das Dot-Produkt der Query- und Key-Vektoren.
+Diese Scores reflektieren die Ähnlichkeit oder Relevanz zwischen den
+einzelnen Tokens. Die berechneten Scores werden anschließend skaliert,
+um eine numerische Stabilität zu gewährleisten. Diese skalierte
+Aufmerksamkeitsmatrix wird dann mit einer <em>Softmax</em>-Funktion
+normalisiert, wodurch die Scores in Wahrscheinlichkeiten umgewandelt
+werden, die zwischen 0 und 1 liegen. Höhere Werte spiegeln eine stärkere
+Aufmerksamkeit auf bestimmte Tokens wider, während niedrigere Werte eine
+geringere Relevanz anzeigen.</p>
+<p><img loading="lazy" src="images/multiheadAttention.png" alt="Aufbau der Multi-Headed-Attention Schicht. Dieses Bild wurde aus
+[@vaswani2023attentionneed]
+entnommen."  />
+{#fig:multihead width=&ldquo;40%&rdquo;}</p>
+<p>Für die Durchführung der Multi-Headed-Attention-Operation werden die
+Query-, Key- und Value-Vektoren in N verschiedene Vektoren unterteilt.
+Der Self-Attention-Mechanismus wird anschließend parallel auf allen N
+Vektoren angewendet. Die resultierenden Ausgabedaten dieser
+unterschiedlichen Attention-Köpfe werden miteinander konkateniert.
+Dieser zusammengesetzte Vektor wird anschließend mit dem ursprünglichen
+Positional Encoding kombiniert, was als Residual Connection bezeichnet
+wird.</p>
+<p>Der Encoder [@vaswani2023attentionneed] dient dazu, Eingabedaten wie
+Texte oder Bilder unter Berücksichtigung des Aufmerksamkeitsmechanismus
+in eine abstrahierte Darstellung umzuwandeln. Durch die parallele
+Verarbeitung von Daten, die den sequentiellen Ansatz früherer Modelle
+ersetzt, wird eine deutliche Beschleunigung der Modelltrainings und
+-inferenz erreicht. Diese Innovation hat die Grundlagen der natürlichen
+Sprachverarbeitung und anderer KI-Anwendungen nachhaltig verändert.</p>
+<p>Der Decoder setzt sich aus zwei Multi-Headed-Attention Schichten und
+einem Feed-Forward Netzwerk zusammen, wobei Connection Residuals und
+Normalisierungen nach jeder Subschicht stattfinden.</p>
+<p>Die Ausgabe des Decoders wird autoregressiv erzeugt, wobei der Decoder
+in jeder Iteration auf die vorherigen Token zugreift, um das nächste
+Token zu generieren. Zu Beginn wird die Eingabe, ähnlich wie im Encoder,
+durch den Multi-Headed-Attention-Mechanismus in eine abstrahierte
+Repräsentation überführt, die sowohl semantische als auch positionelle
+Informationen enthält. Um sicherzustellen, dass bei der Berechnung der
+Aufmerksamkeitsgewichte keine zukünftigen Token die Ausgabe
+beeinflussen, wird die Self-Attention-Schicht mittels
+Matrixmultiplikation maskiert.</p>
+<p>Anschließend folgt eine Cross-Attention-Komponente, bei der der Output
+des Encoders als Query- und Value-Vektoren verwendet wird, während der
+Output der ersten Self-Attention-Schicht des Decoders als Key-Vektor
+dient. Dieser Mechanismus ermöglicht es dem Decoder, die relevanten
+Informationen aus der Encoderausgabe zu extrahieren, um die nächste
+Token-Vorhersage zu treffen.</p>
+<p>Die resultierenden Informationen werden danach in ein Feed-Forward
+Netzwerk weitergeleitet, das die Repräsentation weiterverarbeitet.
+Schließlich wird das Ergebnis durch eine lineare Schicht geführt,
+gefolgt von einer Softmax-Funktion, die die Ausgabe in
+Wahrscheinlichkeiten umwandelt. Diese Wahrscheinlichkeiten
+repräsentieren die Wahrscheinlichkeit jedes möglichen nächsten Tokens,
+anhand derer der Decoder das nächste Token auswählt.</p>
+<p>In dieser Arbeit wird auf eine detaillierte Erläuterung der
+Funktionsweise des Feed-Forward-Netzwerks sowie der genauen
+Funktionsweise der linearen Schichten verzichtet, da eine umfassende
+Darstellung dieser Aspekte den Rahmen der Untersuchung überschreiten
+würde. Für eine vertiefte Auseinandersetzung mit diesen Themen wird auf
+das originale Paper von Google verwiesen [@vaswani2023attentionneed].</p>
+<p>![Aufbau der Transformer-Architektur. Dieses Bild wurde aus
+[@vaswani2023attentionneed]
+entnommen.](images/Bildschirmfoto 2024-12-10 um 12.12.38.png){#fig:transformer
+width=&ldquo;70%&rdquo;}</p>
+<h2 id="anwendungsmöglichkeiten-von-foundation-modellen-in-der-robotik">Anwendungsmöglichkeiten von Foundation-Modellen in der Robotik<a hidden class="anchor" aria-hidden="true" href="#anwendungsmöglichkeiten-von-foundation-modellen-in-der-robotik">#</a></h2>
+<p>Foundation-Modelle bieten in der Robotik das Potenzial, innovative
+Anwendungen zu ermöglichen, die die Grenzen traditioneller,
+aufgabenspezifischer Modelle erweitern. In diesem Abschnitt werden
+zentrale Fähigkeiten von Foundation-Modellen vorgestellt, die dazu
+beitragen können, die Entscheidungsfindung, Planung und Steuerung von
+Robotersystemen signifikant zu verbessern.</p>
+<h3 id="multimodale-fähigkeiten">Multimodale Fähigkeiten<a hidden class="anchor" aria-hidden="true" href="#multimodale-fähigkeiten">#</a></h3>
+<p>Der Begriff <em>multimodal</em> bezeichnet die Fähigkeit eines Modells,
+heterogene Eingabetypen zu akzeptieren, wie zum Beispiel Bilder, Texte
+oder Audiodateien [@sun2023survey]. Diese unterschiedlichen Datentypen
+werden in kompakte, homogene Darstellungen umgewandelt, mit denen ein
+Foundation-Modell weiterarbeiten kann. Ein Modell, das in der Lage ist,
+mehrere Datentypen gleichzeitig zu verarbeiten, kann verschiedene
+Informationsquellen kombinieren und so ein besseres Verständnis für
+komplexe Zusammenhänge entwickeln. Dies führt zu einer erweiterten
+Anwendungsfähigkeit, da die Modelle sowohl visuelle als auch sprachliche
+oder akustische Daten effektiv integrieren können, was in vielen
+Szenarien der Robotik von entscheidender Bedeutung ist
+[@firoozi2023foundation]. Visual-Language-Modell <em>CLIP</em>
+[@clipradford2021learning] ist ein multimodales Foundation-Modell,
+welches die Fähigkeit besitzt, Ähnlichkeitswerte zwischen textuellen
+Beschreibungen und Bildern zu berechnen. Dieses Modell kombiniert
+visuelle und sprachliche Informationen, um semantische Beziehungen
+zwischen den beiden Modalitäten zu erkennen und zu analysieren. Ein
+autonomer Roboter, der mit multimodalen Fähigkeiten ausgestattet ist,
+könnte beispielsweise in einer Lagerhalle eingesetzt werden, um komplexe
+Aufgaben effizient zu lösen. Ein multimodales Foundation-Modell
+ermöglicht es dem Roboter, textuelle Anweisungen zu interpretieren.
+Dabei werden Bilddaten, die durch eine integrierte Kamera erfasst
+werden, mit den textuellen Informationen aus dem Befehl kombiniert.
+Diese Verknüpfung ermöglicht es dem Roboter beispielsweise, ein gelbes
+Paket korrekt zu identifizieren und die Anweisung präzise auszuführen.
+Solche Fähigkeiten demonstrieren, wie multimodale Foundation-Modelle zur
+Steigerung der Flexibilität und Genauigkeit autonomer Systeme beitragen
+können.</p>
+<h3 id="zero-shot-fähigkeiten">Zero-Shot Fähigkeiten<a hidden class="anchor" aria-hidden="true" href="#zero-shot-fähigkeiten">#</a></h3>
+<p>Der Begriff <em>Zero-Shot</em> bezieht sich auf die Fähigkeit eines
+Foundation-Modells, Aufgaben zu bewältigen, ohne dass es für diese
+spezifischen Aufgaben explizit trainiert wurde. Dies bedeutet, dass das
+Modell in der Lage ist, neue Aufgaben oder Downstream-Tasks abzuleiten,
+ohne dass neue, spezialisierte Testdaten erforderlich sind. Diese
+Fähigkeit ermöglicht es, das Modell auf unbekannte Szenarien anzuwenden,
+was insbesondere in der Robotik von Bedeutung ist [@cui2022can]. Ein
+autonomer Roboter könnte beispielsweise seine Umgebung erkennen und sich
+an diese anpassen, ohne zuvor explizit auf diese Umgebung trainiert
+worden zu sein. Ein Roboter, der als Assistenzsystem an einem Infopoint
+eingesetzt wird und in Echtzeit Audiodaten über ein integriertes
+Mikrofon verarbeitet sowie akustische Ausgaben generiert, könnte
+beispielsweise auf Anfragen reagieren, ohne vorher explizit auf diese
+trainiert worden zu sein. Ein solcher Roboter könnte spezifische
+Aufgaben übernehmen, wie das Bringen von Mahlzeiten oder die Übergabe
+von Medikamenten in einem Krankenhaus, während er gleichzeitig
+allgemeine Fragen beantworten kann, etwa nach der Lage des nächsten
+Supermarkts oder Bäckers. Zero-Shot-Fähigkeiten bieten somit das
+Potenzial, Modelle flexibler und anpassungsfähiger in dynamischen und
+unerforschten Kontexten einzusetzen.</p>
+<h2 id="foundation-modelle-im-vergleich-mit-traditionellen-machine-learning-modellen-in-der-robotik">Foundation-Modelle im Vergleich mit traditionellen Machine Learning Modellen in der Robotik<a hidden class="anchor" aria-hidden="true" href="#foundation-modelle-im-vergleich-mit-traditionellen-machine-learning-modellen-in-der-robotik">#</a></h2>
+<p>Traditionelle, aufgabenspezifische Machine-Learning-Modelle erfordern
+umfangreiche, detailliert annotierte Datensätze, um effektiv trainiert
+zu werden. Der Prozess der Datenerhebung, -strukturierung, -bereinigung
+und -annotation ist jedoch äußerst zeit- und ressourcenintensiv. Diese
+Modelle sind zudem in ihrem Anwendungsbereich stark eingeschränkt, da
+sie ausschließlich auf eine spezifische Aufgabe ausgerichtet sind.
+Beispielsweise kann ein auf die Bildverarbeitung spezialisiertes Modell
+keine textuellen Eingaben verarbeiten, ohne dass ein vollständig neues
+Modell entwickelt und trainiert wird. Diese Limitierung macht
+traditionelle Modelle weniger flexibel und erhöht den Aufwand bei der
+Implementierung neuer Anwendungen erheblich.</p>
+<p>Im Gegensatz dazu bieten Foundation-Modelle eine signifikante
+Verbesserung, da sie auf großen, vielfältigen und multimodalen
+Datensätzen vortrainiert werden und dadurch eine breite
+Generalisierungsfähigkeit aufweisen. Sie können mehrere Aufgaben lösen,
+oft ohne zusätzliche aufwändige Annotierungen, dank ihrer
+Zero-Shot-Fähigkeiten. Darüber hinaus sind sie in der Lage, multimodale
+Eingaben, wie Text, Bild und Audio, gleichzeitig zu verarbeiten, was
+ihre Anwendbarkeit in verschiedensten Kontexten erweitert. Ein weiterer
+wesentlicher Vorteil von Foundation-Modellen ist ihre Skalierbarkeit.
+Die zugrunde liegende Transformer-Architektur, die in Abschnitt
+<a href="#sec:transformer">2.1</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;sec:transformer&rdquo;} beschrieben wird, nutzt den
+Aufmerksamkeitsmechanismus, um große Datenmengen effizient und parallel
+zu verarbeiten. Dies steigert nicht nur die Effizienz der Modelle
+erheblich, sondern ermöglicht es auch, kleinere spezialisierte Modelle
+abzuleiten, ohne dass umfangreiche Datensammlungen und Annotationen
+erforderlich sind. Dadurch wird die Entwicklung neuer Anwendungen und
+der Transfer auf neue Domänen erleichtert.</p>
+<p>Diese Flexibilität und Effizienz machen Foundation-Modelle zu einem
+leistungsstarken Werkzeug, das die Limitierungen traditioneller Modelle
+überwindet und neue Möglichkeiten für Innovationen eröffnet.</p>
+<h1 id="sec:risiken-und-grenzen">Risiken und Grenzen<a hidden class="anchor" aria-hidden="true" href="#sec:risiken-und-grenzen">#</a></h1>
+<p>Foundation-Modelle werden typischerweise auf großmaßstäblichen
+Datensätzen aus dem Internet trainiert, die jedoch oft nur
+oberflächliche Informationen enthalten und nicht auf die spezifischen
+Anforderungen der Robotik ausgerichtet sind. Dies führt zu einer
+Herausforderung hinsichtlich der Datenknappheit für robotikspezifische
+Anwendungen von Foundation-Modellen. Um dieses Problem zu adressieren,
+wurden verschiedene Ansätze entwickelt. Ein solcher Ansatz ist
+<em>Play-LMP</em> [@playlynch2020learning], bei dem auf die Verwendung
+komplexer, annotierter Expertendemonstrationen verzichtet wird.
+Stattdessen werden unannotierte und unstrukturierte Play-Daten
+verwendet, die von einem menschlichen Operator bereitgestellt werden.
+Diese Daten bestehen aus einem aktuellen Weltzustand sowie einer Liste
+von Zielzuständen, die gemeinsam als Eingabe dienen, um Testdaten zu
+generieren, die für das Training von Robotern genutzt werden können.</p>
+<p>Ein weiteres wesentliches Risiko beim Einsatz von Foundation-Modellen in
+der Robotik ist die Zuverlässigkeit der Modellvorhersagen. Aktuelle
+Foundation-Modelle sind anfällig für das Phänomen der Halluzination
+[@rawte2023survey], bei dem das Modell plausible, aber faktisch falsche
+Antworten generiert, die nicht mit der realen Welt übereinstimmen.
+Solche Fehler sind in Anwendungen, bei denen die Ausgaben des Modells in
+Echtzeit durch einen Menschen überprüft werden können, in gewissem Maße
+akzeptabel. In sicherheitskritischen Szenarien, wie etwa bei der Nutzung
+in autonomen Robotern, sind diese Fehler jedoch inakzeptabel. Eine
+sorgfältige Unsicherheitsquantifizierung ist daher ein entscheidender
+Schritt, um Foundation-Modelle sicher in Robotersysteme zu integrieren
+und ihre Zuverlässigkeit in praktischen, sicherheitsrelevanten
+Anwendungen zu gewährleisten.</p>
+<p>Es existieren verschiedene Ansätze, die auf dem Konzept der
+Unsicherheitsquantifizierung basieren, um das Problem fehlerhafter
+Ausgaben von Modellen zu mildern. Ein solcher Ansatz ist die
+<em>instanzbasierte Unsicherheitsquantifizierung</em>, bei der das Modell nicht
+nur eine Vorhersage trifft, sondern auch die Unsicherheit bezüglich
+dieser Vorhersage angibt. Ein Beispiel hierfür wäre ein autonom
+fahrender Roboter, der bei der Klassifikation eines Objekts ein
+Prediction Set zurückgibt, das etwa die Optionen „Fußgänger&quot; und
+„Fahrradfahrer&quot; umfasst. Dies bedeutet, dass das Modell unsicher ist, ob
+es sich bei der erkannten Entität um einen Fußgänger oder einen
+Fahrradfahrer handelt. In einem solchen Fall kann das Modell beide
+möglichen Ausgaben in Betracht ziehen und seine Entscheidungen
+entsprechend anpassen, um auf beide Szenarien vorbereitet zu sein
+[@firoozi2023foundation].</p>
+<p>Ein weiteres zentrales Problem stellt das umfassende Testen von
+Robotersystemen dar, die auf Foundation-Modellen basieren. Dabei muss
+gewährleistet werden, dass alle relevanten Teilbereiche des Systems
+getestet werden, wobei der Fokus auf der Sicherheit sowohl vor der
+Inbetriebnahme als auch während des Betriebs und der Aktualisierung des
+Modells liegt. Zu den möglichen Ansätzen zur Sicherstellung dieser
+Sicherheitsanforderungen gehören rigorose Testverfahren, der Einsatz von
+Simulationen sowie die kontinuierliche Überwachung während des Betriebs
+[@firoozi2023foundation].</p>
+<h1 id="sec:fallstudien">Fallstudien<a hidden class="anchor" aria-hidden="true" href="#sec:fallstudien">#</a></h1>
+<p>Ein aktuelles Beispiel für die Anwendung von Foundation-Modellen in der
+Robotik ist der humanoide Roboter, der vom Unternehmen <em>Figure</em> in
+Zusammenarbeit mit einem Foundation-Modell von OpenAI entwickelt wurde
+<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. In ihrem <em>Masterplan</em> beschreibt das Unternehmen die langfristigen
+Ziele und Visionen, die es verfolgt. Ein zentrales Anliegen von <em>Figure</em>
+ist die Bewältigung der gesellschaftlichen Herausforderung, dass eine
+zunehmende Zahl an gefährlichen und ungeliebten Arbeitsplätzen in der
+Zukunft nur schwer mit menschlicher Arbeitskraft gedeckt werden kann.
+Das Unternehmen verfolgt deshalb das Ziel, humanoide Roboter in genau
+diesen Arbeitsbereichen einzusetzen, um sowohl die Produktivität
+erheblich zu steigern als auch die Kosten zu senken. Die zugrunde
+liegende Idee ist, dass, wenn Roboter gefährliche oder wenig attraktive
+Tätigkeiten &ndash; wie etwa die Fließbandarbeit in der Automobilproduktion
+&ndash; übernehmen, erhebliche wirtschaftliche Einsparungen erzielt werden
+können, während gleichzeitig den Menschen die Möglichkeit gegeben wird,
+sich erfüllenderen Aufgaben zu widmen. Diese Perspektive ist jedoch
+nicht unumstritten und bedarf einer vertieften ethischen
+Auseinandersetzung sowie weiterführender Forschung.</p>
+<p>Ein konkretes Beispiel für einen bereits entwickelten humanoiden Roboter
+von <em>Figure</em> ist der <em>Figure01</em>, der in Zusammenarbeit mit einem Modell
+von OpenAI entwickelt wurde. Dieser Roboter ermöglicht
+Sprach-zu-Sprach-Interaktionen, bei denen er über erlernte
+Verhaltensweisen zwischen Mensch und Maschine agiert. Dabei kann der
+Roboter Aufgaben entgegennehmen und diese eigenständig ausführen. Der
+<em>Figure01</em> nutzt Künstliche Intelligenz, um durch Erfahrung und Training
+seine Verhaltensweisen kontinuierlich zu verbessern. Diese erlernten
+Verhaltensweisen umfassen sowohl die Art und Weise, wie der Roboter in
+unterschiedlichen Situationen reagiert, als auch die Durchführung
+spezifischer Aufgaben. Anstatt lediglich auf direkte Anweisungen zu
+reagieren, ist der Roboter in der Lage, nachzudenken und auf der
+Grundlage seiner bisherigen Erfahrungen rationale Schlüsse zu ziehen, um
+angemessene Antworten zu formulieren oder bestimmte Handlungen
+auszuführen.</p>
+<p><img loading="lazy" src="images/figure.png" alt="Funktionsweise des &lt;em&gt;Figure01&lt;/em&gt; Roboters. Bild wurde aus der offiziellen
+Website von Figure entnommen."  />
+{#fig:image
+width=&ldquo;70%&rdquo;}</p>
+<p>Ein weiterer praktischer Anwendungsfall für die Roboter von <em>Figure</em> ist
+die Zusammenarbeit mit der BMW Group, bei der humanoide Roboter des Typs
+<em>Figure02</em> im Karosseriewerk von BMW eingesetzt werden. In diesem
+Szenario übernehmen die Roboter die Aufgabe, Blechteile in speziell
+entwickelte Vorrichtungen zu positionieren, die anschließend als
+Bestandteile der Karosserie montiert werden <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. Obwohl sich dieser
+Einsatz noch in der Testphase befindet, zeigt er das Potenzial, die
+Automobilindustrie in vielfältiger Weise zu unterstützen. Die
+Integration solcher humanoiden Roboter könnte langfristig die Effizienz
+und Präzision in Fertigungsprozessen erhöhen und zur Lösung von
+Problemen im Bereich des Arbeitskräftemangels sowie der Automatisierung
+von komplexen, repetitiven Aufgaben beitragen.</p>
+<h1 id="sec:zusammenfassung">Zusammenfassung<a hidden class="anchor" aria-hidden="true" href="#sec:zusammenfassung">#</a></h1>
+<p>In dieser Arbeit wurde die Funktionsweise von Foundation-Modellen
+umfassend erläutert, wobei auch die zugrunde liegende
+Transformer-Architektur eingehend betrachtet wurde. Des Weiteren wurden
+zentrale Fähigkeiten von Foundation-Modellen, wie Multimodalität und
+Zero-Shot-Fähigkeiten, im Kontext der Robotik untersucht und deren
+Bedeutung für diese Disziplin herausgearbeitet. Dabei wurde ein
+Vergleich zwischen Foundation-Modellen und traditionellen Modellen
+gezogen, um aufzuzeigen, dass Foundation-Modelle aufgrund der
+Transformer-Architektur und ihrer spezifischen Fähigkeiten das Potenzial
+besitzen, die Robotik signifikant zu bereichern. Ein weiterer Fokus der
+Arbeit lag auf der Diskussion der Risiken und Einschränkungen, die mit
+dem Einsatz von Foundation-Modellen verbunden sind. Hierbei wurden
+Herausforderungen wie die Sicherstellung qualitativ hochwertiger
+Trainingsdaten, das Problem der Halluzinationen sowie die
+Unsicherheitsquantifizierung und das Testen von auf Foundation-Modellen
+basierenden Robotersystemen als zentrale Problembereiche identifiziert,
+denen sich Entwickler:innen stellen müssen, wenn diese Modelle in realen
+robotischen Anwendungen eingesetzt werden sollen. Abschließend wurden
+zwei Robotermodelle des Unternehmens Figure vorgestellt, die die
+Relevanz der behandelten Themen in der Praxis verdeutlichen und die
+Bedeutung dieser Forschungsrichtung unterstreichen. In Zukunft kann eine
+verstärkte Integration von Foundation-Modellen in der Robotik erwartet
+werden, insbesondere im Bereich der Automobilindustrie und anderer
+verwandter Industrien. Sofern die genannten Herausforderungen
+erfolgreich adressiert werden können, erscheint auch der Einsatz in
+sicherheitskritischen Anwendungen nicht ausgeschlossen.</p>
+<h1 id="generative-ki-offenlegung" class="unnumbered">Generative KI Offenlegung<a hidden class="anchor" aria-hidden="true" href="#generative-ki-offenlegung">#</a></h1>
+<p>In dieser Arbeit wurde Generative KI (GenKI) für bestimmte Zwecke
+eingesetzt, um den Schreibprozess zu unterstützen. Die folgenden
+Anwendungen von GenKI wurden genutzt:</p>
+<ul>
+<li>
+<p><strong>Zusammenfassungen</strong>: GenKI wurde verwendet, um Inhalte
+zusammenzufassen und eine Übersicht für den Autor zu erstellen.
+Dabei wurde das Ergebnis der Zusammenfassungen zu
+Informationszwecken genutzt, jedoch nicht direkt in der Arbeit
+übernommen.</p>
+</li>
+<li>
+<p><strong>Stilverbesserung</strong>: GenKI wurde eingesetzt, um die Qualität des
+Textes hinsichtlich Rechtschreibung, Grammatik und/oder Stil zu
+verbessern. Die Änderungen wurden überprüft und in den Text
+integriert, um die Lesbarkeit und Kohärenz zu optimieren.</p>
+</li>
+</ul>
+<p>Es wird betont, dass alle verwendeten GenKI-Ausgaben sorgfältig geprüft
+und angepasst wurden, um sicherzustellen, dass der Inhalt den
+akademischen Standards und der wissenschaftlichen Integrität entspricht.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.figure.ai/ai%5B%5D%7B#note1">https://www.figure.ai/ai[]{#note1</a> label=&ldquo;note1&rdquo;}&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.press.bmwgroup.com/deutschland/article/detail/T0444264DE/erfolgreicher-testeinsatz-humanoider-roboter-im-bmw-group-werk-spartanburg?language=de">https://www.press.bmwgroup.com/deutschland/article/detail/T0444264DE/erfolgreicher-testeinsatz-humanoider-roboter-im-bmw-group-werk-spartanburg?language=de</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="next" href="//localhost:1313/posts/legal-challenges-ai/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Legal Challenges to generative AI</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share KI in der Robotik: Foundation Models on x"
+            href="https://x.com/intent/tweet/?text=KI%20in%20der%20Robotik%3a%20Foundation%20Models&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffoundation_models%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share KI in der Robotik: Foundation Models on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffoundation_models%2f&amp;title=KI%20in%20der%20Robotik%3a%20Foundation%20Models&amp;summary=KI%20in%20der%20Robotik%3a%20Foundation%20Models&amp;source=%2f%2flocalhost%3a1313%2fposts%2ffoundation_models%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share KI in der Robotik: Foundation Models on reddit"
+            href="https://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2ffoundation_models%2f&title=KI%20in%20der%20Robotik%3a%20Foundation%20Models">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share KI in der Robotik: Foundation Models on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2ffoundation_models%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share KI in der Robotik: Foundation Models on whatsapp"
+            href="https://api.whatsapp.com/send?text=KI%20in%20der%20Robotik%3a%20Foundation%20Models%20-%20%2f%2flocalhost%3a1313%2fposts%2ffoundation_models%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share KI in der Robotik: Foundation Models on telegram"
+            href="https://telegram.me/share/url?text=KI%20in%20der%20Robotik%3a%20Foundation%20Models&amp;url=%2f%2flocalhost%3a1313%2fposts%2ffoundation_models%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share KI in der Robotik: Foundation Models on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=KI%20in%20der%20Robotik%3a%20Foundation%20Models&u=%2f%2flocalhost%3a1313%2fposts%2ffoundation_models%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="//localhost:1313/">Luka Mirčeta</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
