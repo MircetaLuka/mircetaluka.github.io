@@ -56,8 +56,9 @@ jobs:
             --config hugo.toml --environment production \--buildDrafts --gc --minify=true\
             --baseURL ${{ steps.pages.outputs.base_url }}
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
+          name: github-pages
           path: ./public
   # Deployment job
   deploy:
